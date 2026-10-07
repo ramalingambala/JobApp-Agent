@@ -20,9 +20,10 @@ def get_llm() -> ChatGroq:
     global _llm
     if _llm is None:
         _llm = ChatGroq(
-            model="llama-3.3-70b-versatile",
+            model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
             temperature=0,
             max_tokens=4096,
+            model_kwargs={"seed": int(os.getenv("GROQ_SEED", "42"))},
             api_key=os.getenv("GROQ_API_KEY"),
         )
     return _llm
@@ -75,15 +76,32 @@ _RATE_LIMIT_SIGNALS = ("rate_limit", "rate limit",
                        "429", "quota", "too many requests")
 
 
-def _invoke_llm(messages: list) -> object:
-    """Invoke Groq; transparently fall back to OpenAI GPT-4o-mini on rate limits."""
+def _retry_after_seconds(err: Exception) -> float:
+    """Extract Groq's suggested wait from a 429 message, e.g. 'try again in 2.79s'."""
+    import re
+    m = re.search(r"try again in ([\d.]+)\s*s", str(err))
+    return float(m.group(1)) if m else 0.0
+
+
+def _invoke_llm(messages: list, max_retries: int = 5) -> object:
+    """Invoke the single pinned Groq model, retrying with backoff on rate limits
+    so a TPM spike does not crash the pipeline. Keeps scores deterministic
+    (same model + temperature=0). Falls back only if retries are exhausted."""
+    import time
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            return get_llm().invoke(messages)
+        except Exception as exc:  # noqa: BLE001
+            last_err = exc
+            if not any(sig in str(exc).lower() for sig in _RATE_LIMIT_SIGNALS):
+                raise
+            wait = _retry_after_seconds(exc) or (2.0 ** attempt)
+            time.sleep(min(wait + 0.5, 30.0))
     try:
-        return get_llm().invoke(messages)
-    except Exception as _e:
-        err = str(_e).lower()
-        if any(sig in err for sig in _RATE_LIMIT_SIGNALS):
-            return get_fallback_llm().invoke(messages)
-        raise
+        return get_fallback_llm().invoke(messages)
+    except Exception:  # noqa: BLE001
+        raise last_err
 
 
 # ── Node 1: Fetch JD via Exa MCP ─────────────────────────────────────────────
@@ -109,6 +127,10 @@ def fetch_jd_node(state: dict) -> dict:
     job_url = state.get("job_url", "").strip()
     search_query = state.get("search_query", "").strip()
     portal = state.get("portal", "Any")
+
+    # pasted text already in state — skip fetch entirely
+    if state.get("raw_jd", "").strip():
+        return {"raw_jd": state["raw_jd"], "job_source_url": state.get("job_source_url", "")}
 
     exa = Exa(api_key=os.getenv("EXA_API_KEY", ""))
     raw_jd = ""
@@ -246,7 +268,7 @@ def parse_jd_node(state: dict) -> dict:
         from llama_index.core.prompts import PromptTemplate
 
         li_llm = _LIGroq(
-            model="llama-3.3-70b-versatile",
+            model=os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
             api_key=os.getenv("GROQ_API_KEY"),
             temperature=0,
         )
@@ -272,7 +294,7 @@ def parse_jd_node(state: dict) -> dict:
 
 def score_profiles_node(state: dict) -> dict:
     """
-    Score IC and Leadership profiles against the JD using:
+    Score IC, Engineering Manager, and Leadership profiles against the JD using:
     1. Chroma semantic similarity (LlamaIndex retrieval) for keyword matching
     2. Groq LLM for holistic scoring and breakdown
     """
@@ -291,11 +313,13 @@ def score_profiles_node(state: dict) -> dict:
 
     # Semantic search: retrieve most relevant profile chunks (LlamaIndex → Chroma)
     ic_context = "\n".join(search_profiles(req_query, "IC", k=3))
+    em_context = "\n".join(search_profiles(
+        req_query, "Engineering Manager", k=3))
     ld_context = "\n".join(search_profiles(req_query, "Leadership", k=3))
 
     score_prompt = f"""You are an expert ATS (Applicant Tracking System) scorer.
 
-Score these two profiles against the job description. Return ONLY a JSON object.
+Score these three profiles against the job description. Return ONLY a JSON object.
 
 JOB: {parsed_jd.get('title', '')} at {parsed_jd.get('company', '')}
 SENIORITY: {parsed_jd.get('seniority', '')}
@@ -309,6 +333,9 @@ NICE-TO-HAVES:
 IC PROFILE:
 {ic_context[:2000]}
 
+ENGINEERING MANAGER PROFILE:
+{em_context[:2000]}
+
 LEADERSHIP PROFILE:
 {ld_context[:2000]}
 
@@ -317,10 +344,13 @@ Return this JSON:
   "ic_score": <integer 0-100>,
   "ic_strengths": ["strength 1", "strength 2", "strength 3"],
   "ic_gaps": ["gap 1", "gap 2", "gap 3"],
+    "engineering_manager_score": <integer 0-100>,
+    "engineering_manager_strengths": ["strength 1", "strength 2", "strength 3"],
+    "engineering_manager_gaps": ["gap 1", "gap 2", "gap 3"],
   "leadership_score": <integer 0-100>,
   "leadership_strengths": ["strength 1", "strength 2", "strength 3"],
   "leadership_gaps": ["gap 1", "gap 2", "gap 3"],
-  "best_profile": "IC" or "Leadership",
+    "best_profile": "IC" or "Engineering Manager" or "Leadership",
   "reasoning": "one sentence explaining which profile fits better and why"
 }}
 
@@ -338,20 +368,20 @@ Return ONLY the JSON object.
         match = re.search(r'\{.*\}', result_text, re.DOTALL)
         scores = json.loads(match.group()) if match else {}
 
+    best_profile = scores.get("best_profile", "IC")
+    result_key = best_profile.lower().replace(" ", "_")
     return {
         "ic_score": scores.get("ic_score", 0),
+        "engineering_manager_score": scores.get("engineering_manager_score", 0),
         "leadership_score": scores.get("leadership_score", 0),
-        "best_profile": scores.get("best_profile", "IC"),
-        "strengths": scores.get(
-            f"{scores.get('best_profile', 'ic').lower()}_strengths", []
-        ),
-        "gaps": scores.get(
-            f"{scores.get('best_profile', 'ic').lower()}_gaps", []
-        ),
+        "best_profile": best_profile,
+        "strengths": scores.get(f"{result_key}_strengths", []),
+        "gaps": scores.get(f"{result_key}_gaps", []),
         "messages": [AIMessage(content=(
             f"IC: {scores.get('ic_score')}/100 | "
+            f"Engineering Manager: {scores.get('engineering_manager_score')}/100 | "
             f"Leadership: {scores.get('leadership_score')}/100 | "
-            f"Best: {scores.get('best_profile')} — {scores.get('reasoning', '')}"
+            f"Best: {best_profile} — {scores.get('reasoning', '')}"
         ))],
     }
 
@@ -366,9 +396,12 @@ def analyse_gaps_node(state: dict) -> dict:
     parsed_jd = state.get("parsed_jd", {})
     gaps = state.get("gaps", [])
     best_profile = state.get("best_profile", "IC")
-    ic_score = state.get("ic_score", 0)
-    leadership_score = state.get("leadership_score", 0)
-    best_score = ic_score if best_profile == "IC" else leadership_score
+    profile_scores = {
+        "IC": state.get("ic_score", 0),
+        "Engineering Manager": state.get("engineering_manager_score", 0),
+        "Leadership": state.get("leadership_score", 0),
+    }
+    best_score = profile_scores.get(best_profile, 0)
 
     prompt = f"""You are a career coach and resume expert.
 
@@ -379,12 +412,15 @@ Gaps identified:
 {chr(10).join(f"- {g}" for g in gaps)}
 
 For each gap, suggest a specific, truthful lever to add to the {best_profile} profile.
-Levers must be grounded in the candidate's real experience — no fabrication.
+Levers must quote or reframe evidence already present in the scored profile context.
+Never invent projects, systems, vendors, metrics, revenue, savings, locations, or scope.
+If a gap has no supporting evidence, return "Do not add without verified experience"
+as the lever and identify what evidence the candidate would need to confirm.
 
 Return JSON:
 {{
   "levers": [
-    {{"gap": "gap description", "lever": "specific action to address it", "grounded_in": "the candidate's actual experience"}},
+    {{"gap": "gap description", "lever": "specific action to address it", "grounded_in": "GSK/TESCO/NINA/GIGI experience"}},
     ...
   ],
   "ceiling_score": <estimated score after applying levers>,
@@ -426,9 +462,15 @@ def update_ats_node(state: dict) -> dict:
 
     parsed_jd = state.get("parsed_jd", {})
     ic_score = state.get("ic_score", 0)
+    engineering_manager_score = state.get("engineering_manager_score", 0)
     leadership_score = state.get("leadership_score", 0)
     best_profile = state.get("best_profile", "IC")
-    best_score = ic_score if best_profile == "IC" else leadership_score
+    profile_scores = {
+        "IC": ic_score,
+        "Engineering Manager": engineering_manager_score,
+        "Leadership": leadership_score,
+    }
+    best_score = profile_scores.get(best_profile, 0)
     gaps = state.get("gaps", [])
     levers = state.get("levers", [])
 
@@ -436,12 +478,27 @@ def update_ats_node(state: dict) -> dict:
     company = parsed_jd.get("company", "Unknown Company")
 
     ic_display = f"**{ic_score}**" if best_profile == "IC" else str(ic_score)
+    em_display = (f"**{engineering_manager_score}**"
+                  if best_profile == "Engineering Manager"
+                  else str(engineering_manager_score))
     ld_display = f"**{leadership_score}**" if best_profile == "Leadership" else str(
         leadership_score)
 
     ats_entry = (
-        f"| — | {company} — {title} | {ic_display} | {ld_display} | {best_profile} | {best_score} |"
+        f"| — | {company} — {title} | {ic_display} | {em_display} | "
+        f"{ld_display} | {best_profile} | {best_score} |"
     )
+
+    # Skip persisting failed runs (empty JD / errored parse → all-zero scores)
+    scores_total = (ic_score or 0) + \
+        (engineering_manager_score or 0) + (leadership_score or 0)
+    run_failed = scores_total == 0 or not (
+        parsed_jd.get("title") or parsed_jd.get("company"))
+    if run_failed:
+        return {
+            "ats_entry": ats_entry,
+            "messages": [AIMessage(content="Run failed (no JD parsed / zero scores) — not logged to report.")],
+        }
 
     # Persist to JSON log + rebuild PDF
     try:

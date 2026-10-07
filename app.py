@@ -4,7 +4,7 @@ Job Application Agent — Streamlit Web UI.
 Run: streamlit run app.py
 """
 
-import ssl_patch  # must be first — patches REQUESTS_CA_BUNDLE for corporate proxies
+import ssl_patch  # must be first — patches REQUESTS_CA_BUNDLE for GSK/Zscaler proxy
 import os
 import re as _re_top
 from datetime import datetime, timedelta
@@ -27,8 +27,23 @@ os.environ.setdefault("LANGCHAIN_PROJECT",    os.getenv(
 _BASE = Path(__file__).parent
 _IC_PATH = (_BASE / os.getenv("IC_PROFILE_PATH",
             "../Profile Summary - IC.txt")).resolve()
+_EM_PATH = (_BASE / os.getenv("ENGINEERING_MANAGER_PROFILE_PATH",
+            "../Balachandar Ramalingam EM.pdf")).resolve()
 _LS_PATH = (_BASE / os.getenv("LEADERSHIP_PROFILE_PATH",
-            "../Profile Summary-Leadership.txt")).resolve()
+            "../Balachandar Ramalingam LS - Enhanced.pdf")).resolve()
+
+
+def _score_for(profile: str, ic: int, em: int, leadership: int) -> int:
+    return {"IC": ic, "Engineering Manager": em,
+            "Leadership": leadership}.get(profile, 0)
+
+
+def _profile_preview(path: Path) -> str:
+    if path.suffix.lower() == ".pdf":
+        from pypdf import PdfReader
+        return "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)[:500]
+    return path.read_text(encoding="utf-8")[:500]
+
 
 st.set_page_config(page_title="Job Application Agent",
                    page_icon="🤖", layout="wide")
@@ -41,6 +56,8 @@ with st.sidebar:
     st.markdown(
         f"**IC:** `{_IC_PATH.name}`  \n"
         f"{'✅ found' if _IC_PATH.exists() else '❌ NOT FOUND'}  \n\n"
+        f"**Engineering Manager:** `{_EM_PATH.name}`  \n"
+        f"{'✅ found' if _EM_PATH.exists() else '❌ NOT FOUND'}  \n\n"
         f"**Leadership:** `{_LS_PATH.name}`  \n"
         f"{'✅ found' if _LS_PATH.exists() else '❌ NOT FOUND'}"
     )
@@ -74,7 +91,7 @@ tab_agent, tab_report = st.tabs(["🤖 Agent", "📊 Reports"])
 with tab_agent:
     st.title("🤖 Job Application Agent")
     st.caption(
-        "Scores your IC & Leadership profiles against any job and identifies gaps.")
+        "Scores your IC, Engineering Manager, and Leadership profiles against any job.")
 
     job_url = pasted_text = ""
     job_urls_text = ""
@@ -176,6 +193,7 @@ with tab_agent:
                 "raw_jd":           "",
                 "parsed_jd":        None,
                 "ic_score":         None,
+                "engineering_manager_score": None,
                 "leadership_score": None,
                 "best_profile":     None,
                 "strengths":        [],
@@ -199,13 +217,14 @@ with tab_agent:
                     continue
 
                 _ic = _merged_ul.get("ic_score") or 0
+                _em = _merged_ul.get("engineering_manager_score") or 0
                 _ls = _merged_ul.get("leadership_score") or 0
                 _bp = _merged_ul.get("best_profile") or "IC"
                 _all_scores.append({
                     "Title":   _pjd.get("title") or _hint,
                     "Company": _pjd.get("company", ""),
-                    "IC": _ic, "LS": _ls, "Best": _bp,
-                    "Score": _ic if _bp == "IC" else _ls,
+                    "IC": _ic, "EM": _em, "LS": _ls, "Best": _bp,
+                    "Score": _score_for(_bp, _ic, _em, _ls),
                     "URL": _u,
                     "Gaps": ", ".join(_merged_ul.get("gaps") or []),
                 })
@@ -221,13 +240,14 @@ with tab_agent:
                             _merged_ul.update(list(_step.values())[0])
                         _pjd = _merged_ul.get("parsed_jd") or {}
                         _ic = _merged_ul.get("ic_score") or 0
+                        _em = _merged_ul.get("engineering_manager_score") or 0
                         _ls = _merged_ul.get("leadership_score") or 0
                         _bp = _merged_ul.get("best_profile") or "IC"
                         _all_scores.append({
                             "Title":   _pjd.get("title") or _hint,
                             "Company": _pjd.get("company", ""),
-                            "IC": _ic, "LS": _ls, "Best": _bp,
-                            "Score": _ic if _bp == "IC" else _ls,
+                            "IC": _ic, "EM": _em, "LS": _ls, "Best": _bp,
+                            "Score": _score_for(_bp, _ic, _em, _ls),
                             "URL": _u,
                             "Gaps": ", ".join(_merged_ul.get("gaps") or []),
                         })
@@ -239,7 +259,8 @@ with tab_agent:
                             else "Fetch error" if "get_contents" in _err_str else "Error")
                 _all_scores.append({
                     "Title": _hint, "Company": "",
-                    "IC": 0, "LS": 0, "Best": f"⚠️ {_err_lbl}", "Score": 0,
+                    "IC": 0, "EM": 0, "LS": 0,
+                    "Best": f"⚠️ {_err_lbl}", "Score": 0,
                     "URL": _u, "Gaps": _err_str[:300],
                 })
 
@@ -247,11 +268,13 @@ with tab_agent:
             _df_ul = (pd.DataFrame(_all_scores)
                       .sort_values("Score", ascending=False).reset_index(drop=True))
             _has_err_ul = _df_ul["Best"].astype(str).str.startswith("⚠️").any()
-            _cols_ul = ["Title", "Company", "IC", "LS", "Best", "Score", "URL"]
+            _cols_ul = ["Title", "Company", "IC",
+                        "EM", "LS", "Best", "Score", "URL"]
             if _has_err_ul:
                 _cols_ul += ["Gaps"]
             _cfg_ul = {
                 "IC":    st.column_config.ProgressColumn("IC",  min_value=0, max_value=100, format="%d"),
+                "EM":    st.column_config.ProgressColumn("EM",  min_value=0, max_value=100, format="%d"),
                 "LS":    st.column_config.ProgressColumn("LS",  min_value=0, max_value=100, format="%d"),
                 "Score": st.column_config.ProgressColumn("Top", min_value=0, max_value=100, format="%d"),
                 "URL":   st.column_config.LinkColumn("URL", display_text="🔗 Link"),
@@ -297,6 +320,7 @@ with tab_agent:
             "raw_jd":           pasted_text,
             "parsed_jd":        None,
             "ic_score":         None,
+            "engineering_manager_score": None,
             "leadership_score": None,
             "best_profile":     None,
             "strengths":        [],
@@ -333,17 +357,21 @@ with tab_agent:
         if source_url:
             st.caption(f"📎 Source: [{source_url}]({source_url})")
 
-        c1, c2, c3 = st.columns(3)
+        c1, c2, c3, c4 = st.columns(4)
         ic_score = merged.get("ic_score") or 0
+        em_score = merged.get("engineering_manager_score") or 0
         ld_score = merged.get("leadership_score") or 0
         best = merged.get("best_profile", "IC")
         with c1:
             st.metric("IC Profile",
                       f"{ic_score}/100", delta="Best ✅" if best == "IC" else None)
         with c2:
+            st.metric("Engineering Manager", f"{em_score}/100",
+                      delta="Best ✅" if best == "Engineering Manager" else None)
+        with c3:
             st.metric("Leadership Profile", f"{ld_score}/100",
                       delta="Best ✅" if best == "Leadership" else None)
-        with c3:
+        with c4:
             st.metric("Recommended Profile", best)
 
         st.divider()
@@ -374,6 +402,57 @@ with tab_agent:
         with st.expander("🔍 Full agent output (JSON)"):
             st.json({k: v for k, v in merged.items() if k != "messages"})
 
+        # Persist the finished run so post-run widgets (e.g. the cover-letter
+        # checkbox) survive Streamlit reruns without re-running the pipeline.
+        st.session_state["last_run"] = {
+            "parsed_jd":    parsed,
+            "best_profile": best,
+            "raw_jd":       merged.get("raw_jd", ""),
+            "source_url":   source_url,
+            "job_key":      f"{parsed.get('company', '')}|{parsed.get('title', '')}",
+        }
+        # A new run invalidates any previously generated cover letter.
+        st.session_state.pop("cover_letter_data", None)
+
+    # ── Cover letter (point-by-point) — rendered from the last completed run ──
+    _lr = st.session_state.get("last_run")
+    if _lr:
+        st.divider()
+        st.subheader("✉️ Cover Letter")
+        _show_cover = st.checkbox(
+            "Generate a tailored cover letter (point-by-point requirement match)",
+            key="show_cover_letter",
+        )
+        if _show_cover:
+            _cached = st.session_state.get("cover_letter_data")
+            if not _cached or _cached.get("_job_key") != _lr["job_key"]:
+                with st.spinner("✍️ Drafting cover letter from the JD..."):
+                    from tools.cover_letter import generate_cover_letter
+                    _cl = generate_cover_letter(
+                        _lr["parsed_jd"], _lr["best_profile"], _lr["raw_jd"])
+                    _cl["_job_key"] = _lr["job_key"]
+                    st.session_state["cover_letter_data"] = _cl
+                    _cached = _cl
+
+            from tools.cover_letter import (
+                render_cover_letter_markdown, build_cover_letter_pdf)
+            st.markdown(render_cover_letter_markdown(
+                _cached, _lr["parsed_jd"]))
+
+            _pdf_bytes = build_cover_letter_pdf(
+                _cached, _lr["parsed_jd"], _lr["best_profile"])
+            _pjd = _lr["parsed_jd"] or {}
+            _safe_name = _re_top.sub(
+                r"[^A-Za-z0-9]+", "_",
+                f"{_pjd.get('company', 'Company')}_{_pjd.get('title', 'Role')}").strip("_")
+            st.download_button(
+                "⬇️ Download Cover Letter (PDF)",
+                data=_pdf_bytes,
+                file_name=f"Cover Letter - {_safe_name}.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TAB 2 — Reports
@@ -385,23 +464,33 @@ with tab_report:
 
     # Profile source confirmation
     with st.expander("📄 Profiles used for ATS scoring", expanded=True):
-        pc1, pc2 = st.columns(2)
+        pc1, pc2, pc3 = st.columns(3)
         with pc1:
             st.markdown("**IC Profile**")
             st.code(str(_IC_PATH), language="text")
             if _IC_PATH.exists():
                 st.success("✅ File found")
                 with st.expander("Preview (first 500 chars)"):
-                    st.text(_IC_PATH.read_text(encoding="utf-8")[:500])
+                    st.text(_profile_preview(_IC_PATH))
             else:
                 st.error("❌ File NOT found — check IC_PROFILE_PATH in .env")
         with pc2:
+            st.markdown("**Engineering Manager Profile**")
+            st.code(str(_EM_PATH), language="text")
+            if _EM_PATH.exists():
+                st.success("✅ File found")
+                with st.expander("Preview (first 500 chars)"):
+                    st.text(_profile_preview(_EM_PATH))
+            else:
+                st.error(
+                    "❌ File NOT found — check ENGINEERING_MANAGER_PROFILE_PATH in .env")
+        with pc3:
             st.markdown("**Leadership Profile**")
             st.code(str(_LS_PATH), language="text")
             if _LS_PATH.exists():
                 st.success("✅ File found")
                 with st.expander("Preview (first 500 chars)"):
-                    st.text(_LS_PATH.read_text(encoding="utf-8")[:500])
+                    st.text(_profile_preview(_LS_PATH))
             else:
                 st.error(
                     "❌ File NOT found — check LEADERSHIP_PROFILE_PATH in .env")
@@ -445,6 +534,7 @@ with tab_report:
         for r in reversed(runs):
             best = r.get("best_profile", "IC")
             ic = r.get("ic_score", 0)
+            em = r.get("engineering_manager_score", 0)
             ls = r.get("leadership_score", 0)
             _raw_url = r.get("url", "") or ""
             rows.append({
@@ -455,21 +545,39 @@ with tab_report:
                 "Search":    r.get("search_query", "") if not _raw_url.startswith("http") else "",
                 "URL":       _raw_url if _raw_url.startswith("http") else "",
                 "IC":        ic,
+                "EM":        em,
                 "LS":        ls,
                 "Best":      best,
-                "Top Score": ic if best == "IC" else ls,
             })
 
         df = pd.DataFrame(rows)
+
+        def _score_bar(col):
+            styles = []
+            for v in col:
+                try:
+                    fv = float(v)
+                except (TypeError, ValueError):
+                    styles.append("")
+                    continue
+                pct = max(0.0, min(100.0, fv))
+                color = "#22c55e" if fv > 80 else "#ff4b4b"
+                styles.append(
+                    f"background: linear-gradient(90deg, {color} {pct}%, "
+                    f"rgba(0,0,0,0.06) {pct}%); color: #111;"
+                )
+            return styles
+
+        styled_df = df.style.apply(_score_bar, subset=["IC", "EM", "LS"])
         st.dataframe(
-            df,
+            styled_df,
             use_container_width=True,
             hide_index=True,
             column_config={
-                "IC":        st.column_config.ProgressColumn("IC",  min_value=0, max_value=100, format="%d"),
-                "LS":        st.column_config.ProgressColumn("LS",  min_value=0, max_value=100, format="%d"),
+                "IC":        st.column_config.NumberColumn("IC",  format="%d"),
+                "EM":        st.column_config.NumberColumn("EM",  format="%d"),
+                "LS":        st.column_config.NumberColumn("LS",  format="%d"),
                 "Applied":   st.column_config.TextColumn("Applied", width="small"),
-                "Top Score": st.column_config.ProgressColumn("Top", min_value=0, max_value=100, format="%d"),
                 "URL":       st.column_config.LinkColumn("URL", display_text="🔗 Link"),
                 "Search":    st.column_config.TextColumn("Search Query"),
             },
@@ -484,8 +592,10 @@ with tab_report:
             _run_key = f"{_real_idx}_{r.get('run_date', _real_idx)}"
 
             best = r.get("best_profile", "IC")
-            ic, ls = r.get("ic_score", 0), r.get("leadership_score", 0)
-            top = ic if best == "IC" else ls
+            ic = r.get("ic_score", 0)
+            em = r.get("engineering_manager_score", 0)
+            ls = r.get("leadership_score", 0)
+            top = _score_for(best, ic, em, ls)
             company = r.get("company", "")
             title = r.get("title", "")
             _url_raw = r.get("url", "") or ""
@@ -497,7 +607,7 @@ with tab_report:
             _applied_badge = "  ✅ Applied" if _is_applied else ""
 
             with st.expander(
-                f"{colour} {company} — {title}  ·  IC {ic} / LS {ls} → **{best}**  ·  {date}{_applied_badge}"
+                f"{colour} {company} — {title}  ·  IC {ic} / EM {em} / LS {ls} → **{best}**  ·  {date}{_applied_badge}"
             ):
                 # ── Applied checkbox + Delete button ──────────────────────────
                 _chk_col, _del_col = st.columns([5, 1])
@@ -529,12 +639,15 @@ with tab_report:
                 elif sq:
                     st.caption(f"🔍 Search query: `{sq}`")
 
-                d1, d2, d3 = st.columns(3)
+                d1, d2, d3, d4 = st.columns(4)
                 d1.metric("IC Score",    f"{ic}/100",
                           delta="Best ✅" if best == "IC" else None)
                 d2.metric(
+                    "EM Score", f"{em}/100",
+                    delta="Best ✅" if best == "Engineering Manager" else None)
+                d3.metric(
                     "LS Score",    f"{ls}/100", delta="Best ✅" if best == "Leadership" else None)
-                d3.metric("Recommended", best)
+                d4.metric("Recommended", best)
 
                 gc, lc = st.columns(2)
                 with gc:

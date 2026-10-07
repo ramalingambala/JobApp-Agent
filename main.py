@@ -8,7 +8,7 @@ Usage:
   python main.py --refresh-profiles   # re-index profiles into Chroma
 """
 
-import ssl_patch  # must be first — patches REQUESTS_CA_BUNDLE for corporate proxies
+import ssl_patch  # must be first — patches REQUESTS_CA_BUNDLE for GSK/Zscaler proxy
 import argparse
 import json
 import os
@@ -35,6 +35,7 @@ def run_agent(job_url: str = "", search_query: str = ""):
         "raw_jd":       "",
         "parsed_jd":    None,
         "ic_score":     None,
+        "engineering_manager_score": None,
         "leadership_score": None,
         "best_profile": None,
         "strengths":    [],
@@ -72,6 +73,8 @@ def run_agent(job_url: str = "", search_query: str = ""):
     print("📊 SCORES")
     print("=" * 60)
     print(f"  IC Profile:         {merged.get('ic_score', '?')}/100")
+    print(
+        f"  Engineering Manager:{merged.get('engineering_manager_score', '?')}/100")
     print(f"  Leadership Profile: {merged.get('leadership_score', '?')}/100")
     print(f"  Best Profile:       {merged.get('best_profile', '?')}")
 
@@ -101,6 +104,7 @@ def run_agent(job_url: str = "", search_query: str = ""):
             "title":            merged.get("parsed_jd", {}).get("title"),
             "company":          merged.get("parsed_jd", {}).get("company"),
             "ic_score":         merged.get("ic_score"),
+            "engineering_manager_score": merged.get("engineering_manager_score"),
             "leadership_score": merged.get("leadership_score"),
             "best_profile":     merged.get("best_profile"),
             "gaps":             merged.get("gaps"),

@@ -22,8 +22,10 @@ class JobAgentState(TypedDict):
 
     # ── Profile Scoring ───────────────────────────────────────────────────────
     ic_score: Optional[float]
+    engineering_manager_score: Optional[float]
     leadership_score: Optional[float]
-    best_profile: Optional[str]           # "IC" | "Leadership"
+    # IC | Engineering Manager | Leadership
+    best_profile: Optional[str]
     strengths: Optional[list]
     gaps: Optional[list]
     levers: Optional[list]                # actionable improvement strings

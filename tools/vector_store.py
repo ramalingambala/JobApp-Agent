@@ -5,7 +5,7 @@ LlamaIndex owns the ingestion pipeline: profile text is loaded as LlamaIndex
 ``Document`` objects, chunked by a ``SentenceSplitter`` node parser, embedded with
 a local HuggingFace model, and persisted into a local Chroma collection through
 ``ChromaVectorStore``. Retrieval uses LlamaIndex's ``VectorStoreIndex`` retriever
-with metadata filtering (IC vs Leadership).
+with metadata filtering (IC vs Engineering Manager vs Leadership).
 
 Everything runs locally — no external embedding API, no cloud vector DB.
 """
@@ -38,11 +38,15 @@ CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
 PROFILE_COLLECTION = os.getenv("PROFILE_COLLECTION", "profiles_li")
 
 IC_PROFILE_PATH = os.getenv("IC_PROFILE_PATH", "../Profile Summary - IC.txt")
+ENGINEERING_MANAGER_PROFILE_PATH = os.getenv(
+    "ENGINEERING_MANAGER_PROFILE_PATH", "../Balachandar Ramalingam EM.pdf")
 LEADERSHIP_PROFILE_PATH = os.getenv(
-    "LEADERSHIP_PROFILE_PATH", "../Profile Summary-Leadership.txt")
+    "LEADERSHIP_PROFILE_PATH", "../Balachandar Ramalingam LS - Enhanced.pdf")
 
 # Local embeddings — runs on CPU, no API key required
 # Model: all-MiniLM-L6-v2 (~80MB, downloaded once, cached locally)
+# never phone home if model is cached
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
 _embed_model = None
 _index = None
 
@@ -50,31 +54,46 @@ _index = None
 def get_embeddings() -> HuggingFaceEmbedding:
     global _embed_model
     if _embed_model is None:
+        cache_root = (Path.home() / ".cache" / "huggingface" / "hub" /
+                      "models--sentence-transformers--all-MiniLM-L6-v2" /
+                      "snapshots")
+        snapshots = sorted(cache_root.glob("*"))
+        model_name = (str(snapshots[-1]) if snapshots
+                      else "sentence-transformers/all-MiniLM-L6-v2")
         _embed_model = HuggingFaceEmbedding(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
+            model_name=model_name,
             device="cpu",
             normalize=True,
+            cache_folder=os.path.expanduser("~/.cache/huggingface/hub"),
         )
         # Ensure LlamaIndex never falls back to a remote (OpenAI) embed model.
         Settings.embed_model = _embed_model
     return _embed_model
 
 
+def load_profile_text(path: Path) -> str:
+    """Extract profile content from a text or PDF file."""
+    if path.suffix.lower() == ".pdf":
+        from pypdf import PdfReader
+        return "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
+    return path.read_text(encoding="utf-8")
+
+
 def _load_profile_docs() -> list[Document]:
-    """Load IC and Leadership profile text files as LlamaIndex Documents."""
+    """Load the configured profiles as LlamaIndex Documents."""
     docs: list[Document] = []
 
     for label, path_str in [
         ("IC", IC_PROFILE_PATH),
+        ("Engineering Manager", ENGINEERING_MANAGER_PROFILE_PATH),
         ("Leadership", LEADERSHIP_PROFILE_PATH),
     ]:
         path = Path(path_str)
-        if not path.exists():
-            # Try resolving relative to this file's location
-            path = Path(__file__).parent.parent / path_str.lstrip("../")
+        if not path.is_absolute():
+            path = (Path(__file__).parent.parent / path).resolve()
 
         if path.exists():
-            text = path.read_text(encoding="utf-8")
+            text = load_profile_text(path)
             docs.append(
                 Document(
                     text=text,
@@ -135,7 +154,7 @@ def _build_index(reset: bool = False) -> VectorStoreIndex:
 
 
 def get_profile_index() -> VectorStoreIndex:
-    """Return a cached LlamaIndex index over the IC + Leadership profiles."""
+    """Return a cached LlamaIndex index over all configured profiles."""
     global _index
     if _index is None:
         _index = _build_index(reset=False)
@@ -145,18 +164,27 @@ def get_profile_index() -> VectorStoreIndex:
 def search_profiles(query: str, profile_type: str, k: int = 3) -> list[str]:
     """
     Retrieve the top-k most relevant profile chunks for a given profile type
-    ("IC" or "Leadership") using LlamaIndex semantic retrieval over Chroma.
+    using LlamaIndex semantic retrieval over Chroma.
 
     Returns a list of plain-text chunk contents (empty list if nothing found).
     """
-    index = get_profile_index()
     filters = MetadataFilters(
         filters=[MetadataFilter(
             key="profile_type", value=profile_type,
             operator=FilterOperator.EQ)]
     )
-    retriever = index.as_retriever(similarity_top_k=k, filters=filters)
-    nodes = retriever.retrieve(query)
+    try:
+        retriever = get_profile_index().as_retriever(
+            similarity_top_k=k, filters=filters)
+        nodes = retriever.retrieve(query)
+    except chromadb.errors.NotFoundError:
+        # Another process may have refreshed Chroma, invalidating this
+        # process's cached collection ID. Reconnect and retry once.
+        global _index
+        _index = None
+        retriever = get_profile_index().as_retriever(
+            similarity_top_k=k, filters=filters)
+        nodes = retriever.retrieve(query)
     return [n.node.get_content() for n in nodes]
 
 

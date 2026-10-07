@@ -133,23 +133,27 @@ def build_report_pdf(runs: list[dict] | None = None) -> Path:
     story.append(Spacer(1, 0.3 * cm))
 
     # Summary table header
-    table_data = [["#", "Company / Role", "IC", "LS", "Best", "Date"]]
+    table_data = [["#", "Company / Role", "IC", "EM", "LS", "Best", "Date"]]
     for i, r in enumerate(runs, 1):
         ic = r.get("ic_score", 0)
+        em = r.get("engineering_manager_score", 0)
         ls = r.get("leadership_score", 0)
         best = r.get("best_profile", "IC")
         ic_txt = f"★{ic}" if best == "IC" else str(ic)
+        em_txt = f"★{em}" if best == "Engineering Manager" else str(em)
         ls_txt = f"★{ls}" if best == "Leadership" else str(ls)
         table_data.append([
             str(i),
             f"{r.get('company', '?')} — {r.get('title', '?')}",
             ic_txt,
+            em_txt,
             ls_txt,
             best,
             r.get("run_date", "")[:10],
         ])
 
-    col_widths = [1 * cm, 9 * cm, 1.5 * cm, 1.5 * cm, 2.5 * cm, 2.5 * cm]
+    col_widths = [0.8 * cm, 7.5 * cm, 1.2 * cm, 1.2 * cm,
+                  1.2 * cm, 3.2 * cm, 2.2 * cm]
     tbl = Table(table_data, colWidths=col_widths, repeatRows=1)
     tbl.setStyle(TableStyle([
         ("BACKGROUND",  (0, 0), (-1, 0), colors.HexColor("#16213e")),
@@ -173,6 +177,7 @@ def build_report_pdf(runs: list[dict] | None = None) -> Path:
                      color=colors.HexColor("#eeeeee")))
 
         ic = r.get("ic_score", 0)
+        em = r.get("engineering_manager_score", 0)
         ls = r.get("leadership_score", 0)
         best = r.get("best_profile", "IC")
         title = r.get("title", "Unknown Role")
@@ -186,7 +191,8 @@ def build_report_pdf(runs: list[dict] | None = None) -> Path:
             heading_style,
         ))
 
-        meta_parts = [f"IC: <b>{ic}/100</b>", f"LS: <b>{ls}/100</b>",
+        meta_parts = [f"IC: <b>{ic}/100</b>", f"EM: <b>{em}/100</b>",
+                      f"LS: <b>{ls}/100</b>",
                       f"Recommended: <b>{best}</b>"]
         if run_date:
             meta_parts.append(run_date[:16])
@@ -201,7 +207,8 @@ def build_report_pdf(runs: list[dict] | None = None) -> Path:
             ))
 
         # Score bar (visual)
-        best_score = ic if best == "IC" else ls
+        best_score = {"IC": ic, "Engineering Manager": em,
+                      "Leadership": ls}.get(best, 0)
         bar_pct = int(best_score)
         bar_color = (
             colors.HexColor("#27ae60") if best_score >= 85
@@ -257,6 +264,7 @@ def save_and_rebuild(state: dict) -> Path:
         "domain":           parsed.get("domain", ""),
         "seniority":        parsed.get("seniority", ""),
         "ic_score":         state.get("ic_score", 0),
+        "engineering_manager_score": state.get("engineering_manager_score", 0),
         "leadership_score": state.get("leadership_score", 0),
         "best_profile":     state.get("best_profile", "IC"),
         "strengths":        state.get("strengths", []),

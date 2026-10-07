@@ -1,26 +1,32 @@
 """
-ssl_patch.py — Import FIRST in app.py and main.py.
+ssl_patch.py — Must be imported FIRST in app.py and main.py.
 
-Some corporate networks run TLS-inspecting proxies that re-sign every outbound
-HTTPS connection with an internal CA. Tools that pin their own certifi bundle
-(e.g. the Azure CLI) will then fail with CERTIFICATE_VERIFY_FAILED.
+GSK runs Zscaler SSL inspection: every outbound HTTPS connection is
+re-signed by the GSK Issuing CA 1.  The Azure CLI pre-sets
+REQUESTS_CA_BUNDLE to its own certifi copy which doesn't include the
+GSK corporate CA, so all requests fail with CERTIFICATE_VERIFY_FAILED.
 
-If you are behind such a proxy, point this module at your corporate CA bundle
-by either:
-  • setting the CORP_CA_BUNDLE environment variable to the .pem path, or
-  • placing a file named `corporate_ca_bundle.pem` next to this file.
-
-When a bundle is found, REQUESTS_CA_BUNDLE and SSL_CERT_FILE are set so both
-`requests` and `httpx` trust the corporate certificate chain. If no bundle is
-present, this module is a no-op and normal system trust is used.
+This module resolves the absolute path of gsk_ca_bundle.pem (bundled
+next to this file) and forcefully sets REQUESTS_CA_BUNDLE and
+SSL_CERT_FILE so both `requests` and `httpx` (used by the Anthropic
+SDK) trust the GSK cert chain.
 """
 
 import os
 from pathlib import Path
 
-_bundle = os.getenv("CORP_CA_BUNDLE") or str(
-    Path(__file__).parent / "corporate_ca_bundle.pem")
+_BUNDLE = Path(__file__).parent / "gsk_ca_bundle.pem"
 
-if Path(_bundle).exists():
-    os.environ["REQUESTS_CA_BUNDLE"] = _bundle
-    os.environ["SSL_CERT_FILE"] = _bundle
+if _BUNDLE.exists():
+    bundle_path = str(_BUNDLE)
+    # Override regardless of what the shell environment already has
+    os.environ["REQUESTS_CA_BUNDLE"] = bundle_path
+    os.environ["SSL_CERT_FILE"] = bundle_path
+    # httpx (used by anthropic SDK) respects SSL_CERT_FILE automatically
+else:
+    import warnings
+    warnings.warn(
+        "gsk_ca_bundle.pem not found — SSL calls may fail on the GSK network. "
+        "Run: python3 build_gsk_bundle.py",
+        stacklevel=2,
+    )
