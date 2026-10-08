@@ -1,0 +1,1 @@
+Hi, I'm Bala, a software engineer with ~20 years building enterprise-grade apps in finance and healthcare. At Tesco, I designed systems handling 2M transactions/sec, letting clients scale without disruption. At GSK, I accelerated delivery by shifting to cloud-native AI. I'd love to bring that speed and scale to Google's FTE role, tackling complex customer challenges globally.

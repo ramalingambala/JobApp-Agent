@@ -1,0 +1,57 @@
+## SUMMARY
+Enterprise technology and engineering leader with two decades of experience driving large-scale **digital transformation**, **enterprise application modernization**, and **AI-led** change across global organizations in **Healthcare, Banking, and Insurance**. Own end-to-end **technology roadmaps** and build **secure, scalable digital ecosystems**, leading a **multi-tier engineering organization of 50+** across three **GCC locations** — **5 squads** with **2 engineering managers and 5 tech leads** reporting — while influencing **VP- and CxO-level** stakeholders and owning a **technology portfolio budget of up to $20M**, including resource, SOW, CapEx, and OpEx management with **P&L accountability**.
+
+Deep expertise in **enterprise platform strategy**, **digital workplace transformation**, **cloud modernization**, **AI engineering**, and **enterprise integration (ERP / SAP)**. Championed the enterprise-wide rollout of **GIGI**, an employee-centric **digital workplace and Conversational AI platform** adopted by **88K+ employees** across **7 countries and 9 business units**, processing **20M+ AI interactions** with **71% positive user feedback**. Set direction for reusable enterprise AI capabilities and established engineering standards for retrieval, evaluation, observability, cost control, and **Responsible AI governance**. Combine executive ownership with deep technical judgment — resolving ambiguous, high-stakes priorities, influencing **VP- and CxO-level** stakeholders, and governing production systems in **regulated (GxP / SOX)** environments under **GxP, PCI DSS, and GDPR**.
+
+## EXPERIENCE
+
+### Associate Director of Engineering — GSK
+Bengaluru, India | Aug 2021 – Present
+- Lead the **global strategy and roadmap** for a portfolio of **enterprise applications** (GIGI, Site2Test, Sales Performance, Supplier Portal), delivering a unified, secure, and scalable **digital ecosystem** that improves workforce **productivity and collaboration** for a large global workforce.
+- Established the enterprise **agentic AI strategy and delivery model**, introducing **NINA** as a reusable multi-agent platform and deploying copilots across requirements, testing, and engineering workflows to improve delivery speed and quality across the **SDLC**.
+- Owned the end-to-end **employee technology experience lifecycle** for **GIGI**, an enterprise **digital workplace platform** spanning Web, Android, and iOS. Scaled adoption to **88K+ active employees** and **87,873 users** who asked **20.3M questions** — driving **20M+ AI interactions** (**11.6M** writing, **5M** Q&A, **1M** document analysis) across **7 countries** and **9 business units**, with **71% positive user feedback** (54,970 of 80,275 responses). Enterprise usage data indicated average productivity savings of **~4 hours per employee per week**, varying by role; the broader portfolio served **VP- and CxO-level** leaders across **CyberSecurity, Procurement, R&D, Legal, and Finance**.
+- Scaled responsible enterprise adoption and enablement — **74K employees completed all three structured GIGI certification trainings** — embedding safe, governed **AI usage** across the global workforce.
+- Accountable for the **enterprise platform modernization portfolio**, investment priorities, and engineering standards across **Azure and AWS** — establishing reusable AI capabilities, API-first integration patterns, and governance that accelerated product delivery and enterprise adoption.
+- Set technical direction for the enterprise **RAG and vector-search platform**, establishing reusable retrieval, evaluation, observability, prompt lifecycle, cost-control, and governance standards adopted across AI products to improve reliability and reduce model risk.
+- Integrated custom enterprise applications with **ERP (SAP)** systems, leading the tech team for the SAP approval interface — automating **426K+ approvals across 7 enterprise systems** (SailPoint, SAP GRC, ServiceNow, SharePoint, GRP) to streamline governed enterprise workflows.
+- Own a **technology portfolio budget of up to $20M** with **P&L accountability**, governing workforce and resource allocation, partner **Statements of Work (SOW)**, **CapEx**, and **OpEx** across GCC locations while aligning investment with transformation priorities and driving **cost optimization**.
+- Manage **strategic vendors and delivery partners** and govern **senior-stakeholder relationships** across business units — aligning contracts, SLAs, and capacity with roadmap priorities to deliver enterprise outcomes.
+- Sponsored the organization's first **AKS platform capability**, enabling standardized cloud-native delivery and reducing **Azure** expenditure by **~$1.2M** through workload and gateway modernization.
+- Govern enterprise-wide **functional transformation programs** through engineering standards, **release governance**, **automated quality gates**, and best practices that sustain complex, highly available **cloud-native** systems at enterprise scale.
+- Designed the **operating model** for project deliverables and **BAU / production support**, tailored to each application's category and business impact — defining **service delivery** tiers, ownership, and escalation paths to sustain enterprise applications post-deployment.
+- Standardized **IT service management** using **ServiceNow (SNOW)** for **Incident, Change, and Problem Management** — driving **process improvement** that reduced the top 10% of unplanned outages and improved **Incident SLA** attainment from **60% to 80%**, protecting business continuity for **88K+ users** and reducing major-incident impact.
+- Lead a **multi-tier engineering organization of 50+** across **three GCC locations** — **5 squads** with **2 engineering managers and 5 tech leads** reporting.
+
+### Engineering Manager — TESCO
+Bengaluru, India | Oct 2009 – Aug 2021
+- Set up and led **development teams across 2 GCC locations** for multiple enterprise programs, owning **product roadmap** delivery for **Tesco Digital Wallet Pay+** in partnership with Engineering and Product leadership.
+- Shaped engineering careers — partnering with the centralized technology team to formalize the enterprise **career framework** for the Bank, embedding capability frameworks and workforce development that grew talent across the organization.
+- Developed engineers through **coaching**, performance assessments, feedback, and structured development plans, consistently growing talent into senior roles.
+- Owned **hiring, performance calibration, promotions, succession planning, and retention** — **reduced attrition from 13% to 5%** through structured career progression and mentoring, **promoted 5 engineers from mid-level to senior grade**, and cross-trained talent across roles to build a resilient leadership bench.
+- Designed and implemented enterprise **automations** across software development and service management, improving team **productivity** and process maturity.
+- Established real-time service dashboards using **SSRS, APM, ServiceNow, and Azure Metrics** to improve operational visibility and reliability.
+- Communicated highly technical concepts effectively to varied audiences, supporting structured technical decision-making and **collaboration** across **cross-functional teams**.
+
+### Senior Software Engineer — LanceSoft India Pvt Ltd
+Bangalore, India | Dec 2007 – Sep 2009
+- Delivered enterprise application development for **Linqpay**, a **credit card payment gateway**, across full software development lifecycles, from design through deployment and support.
+
+### Software Engineer — Accenture Services Pvt Ltd
+Bangalore, India | Jul 2005 – Nov 2007
+- Built and supported the software solution for UK insurance provider **RSA** through **agile squads**.
+
+## CORE COMPETENCIES
+- **Engineering Leadership & Organization**: Global Engineering Leadership (50+) • Manager-of-Managers Leadership • Organization Design • Hiring & Workforce Planning • Performance Calibration • Talent Development • Succession Planning • Executive Influence
+- **Enterprise AI & Platform Strategy**: Digital Workplace Transformation • Employee Technology Experience • Enterprise AI Adoption • Agentic AI • Conversational AI • Multi-Agent Platforms • RAG & Enterprise Search • Reusable AI Capabilities • Product & Technology Roadmaps • Responsible AI
+- **Architecture, Reliability & Security**: Enterprise Architecture • Cloud-Native Platforms • Distributed Systems • API & Integration Strategy • Reliability Engineering • SDLC Governance • Security & Compliance (GxP, SOX, PCI DSS, GDPR)
+- **Financial, Vendor & Delivery Governance**: Portfolio Budget Ownership (up to $20M) • P&L Accountability • CapEx & OpEx Management • Resource & SOW Cost Governance • Financial Planning • Cost Optimization • Vendor & Stakeholder Management • Operating Models • Cross-Functional Delivery
+
+## CERTIFICATIONS
+- LUMA Certified Practitioner in Design Thinking
+- Automation Anywhere Certified RPA Professional
+- IBM Certified Professional — WebSphere Enterprise Service Bus V7.0 Integration Development
+- Microsoft Certified Professional Developer — Enterprise Application (MCPD EA)
+- Microsoft AI Boot Camp
+
+## EDUCATION
+**Bachelor of Technology, Computer Science** — Vellore Institute of Technology, 2005

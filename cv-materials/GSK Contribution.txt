@@ -1,0 +1,70 @@
+2026
+Completed the POC on BrowserStack Products for different products on how to integrate to ADO pipeline for real device testing of web apps and mobile apps for different application, Low code automation testing of websites and integrate to ADO as a quality gate, Integrate the Accessibility testing for websites
+Worked with GSK Leaders and BrowserStack team on highlighting the pro's and cons of this tool and work with CyberSecurity and Governance team to get the tool approved for GSK 
+
+Showed the Multi-agent application for NINA application to use in entire SDLC to create the BRD requirement to read it from the BRD documents in the form of Documents Team discussion, develop the feature from the JIRA stories, create the functional regression test suites from the JIRA stories, develop the non functional requirement of load testing agent to spin up before the major release
+
+Showed a quick POV on how to integrate the Claude Code to Kong Gateway and LLM Gateway to the GSK leaders to thrive the business value from this projects and AI roadmap strategy for GSK
+
+
+GIGI Application
+
+Leading the tech team for the SAP approval interface implementation
+Showcased the Demo on Agentic AI platform on Building Custom Agents and MCP server to Srini and Richard
+Showed new GIGI features in Monthly Ask GIGI connect, D & I roadshows, GCC Tech Talk’s
+undefined
+S2T ApplicationImplemented 5 releases from R11 to R15 for this year which includes key features like Order Shipment, Transfer Storage, Shipment List, Marken API, Subject Range API, User Management, Data Operation, QR Code generationImplementing the new QR code authentication process for the applicationImplemented the API Gateway for all APIs.Tested the DR strategy for this GXP application for Cross region connectivity for API, and DBMigrated to oauth token for the application authentication and API authenticationCo-ordinated for the Power BI Data Gateway to S2T DB’s                                     
+
+H2T ApplicationDesign the solution for H2T app and co-ordinated for the first release implementation after all approval, security testingCompleted the Load testing for the application and baseline the standards for other application in the SOPTested the application using Google Firebase app and released in public play store
+
+Supplier WebsiteDesign the solution for H2T app and co-ordinated for the first release implementation after all approval, security testingRelease 2 covering the CMS admin portalSuccessfully onboarded BAU team and operating manual for the project
+Sales Perf App
+
+Spam ReporterExploring the Android solution like iOS platform using any available API from GoogleShow cased a simple POC on how to integrate the iOS Spam reporter app to SNOW and waiting for Release 2 budget approval
+
+ValidateGSK APIShow cased a simple POC on how to integrate the iOS Spam reporter app to SNOW and waiting for Release 2 budget approval
+
+Grants & Donation
+Show cased a simple POC on how to integrate the iOS Spam reporter app to SNOW and waiting for Release 2 budget approval
+
+
+Improvements
+
+Migrated all the app services to Application Service Environments for all projects
+Implemented TLS 1.3 to all applications
+Implemented GitHub Actions as Secondary CI/CD solution for backup for ADO
+Integrated TestFlight into all mobile iOS app as beta testing platform into CI/CD
+Migrated from App Centre to Test Flight, Firebase for Android, IOS apps
+Upgraded .Net application to 8
+Upgraded Node apps to Node 22
+Upgraded the React app to react 18
+Integrated DAST to our CI/CD process through API gateway
+Integrated a Shakedown Regression Testing for API’s in S2T and Sales Performance App
+Working on migrating the app gateways to managed app gateway
+Working on migrating the application Azure WAF to Akamai WAF
+Exploring the BrowserStack products for real device testing automation for webapp and mobile app
+Explored the Accessibility testing for the first time internally in GSK for the supplier website
+Migrating the Service Connection to Managed Identity for ADO’s
+Implementing the AKeyless rotation for all oauth connection
+Exploring the peer programmer GitHub Copilot review process for PR
+
+
+
+BAU
+
+Resolved 120+ SNOW task for all BAU applications
+Resolved 20+ SNOW Incidents from all BAU applications
+Completed 30+ application changes for this year for various projects
+
+
+Trainings & Certification
+
+Completed the Microsoft AI Boot Camp trainings
+Completed the training and successfully obtained the LUMA Design Thinking practitioner certificate
+
+
+
+PerformanceGiGi is now live Enterprise wide on all 3 platforms Web, Android and iOSSales Perf App is now live and adopted by Finance BU Senior Leaders and ExecutivesSite2Test DR Testing Phase 2 is completed successfully for Cross region SetupTrustNew application MVP are been shared to new Stakeholders likeCSO for SpamReporter,GiGi New Integration POC's are being startedHomeTest MVP has been startedNew Supplier Portal MVP was shared to Legal and Procurement BU StakeholdersCMP 2.O is being followed to move the Azure Infrastructure to the recommended solutions like ASE, Managed App Gateway, WAF Migration on existing solutions.
+
+Demonstrated the GSK culture and build the trust with Stakeholders within GSK whenever opportunity comes up like by extending the strategic partner support with CTS, Digi Spark Events within GCC, rusted delegate for my line manager, Architectural meetings for GIGI.Project Delivery• Successfully launched Site2Test Web and Mobile Apps and subsequent releases till release 5 in Agile methodology• Pod Cast POC app is complete and setting up the Development environment• Launched Delphi public Mobile app for Europe Oncology team• Migrated DevOps Pipeline to Org account for Web apps pipeline and updated the pipelines for GitHub migration related changes• Successfully implemented AAD changes to all the application in Live by eliminating the SQL Authentication for DB• Implemented the Cloud Compliance Changes to all apps till the latest Cloud policy Waves• Migrated the CUC applications, PMO, Grants, Versioning, ValidateGSK to .NET Core 6• SwiftUI SPM for GSKButton, GSKTheme, GSKImageDownloader, GSKNetworking, GSKDisplayText are released in Developer portal• Decommissioned POAP, Taxonomy, Corp Security, Crisis Mobile/Web apps• Taken the ownership for Design system and working on the plan for the new revised tool• Implemented first Microservice based architecture for Delphi API• Worked on Aily POC app for GSK Leadership team• Working on Sales Performance Management App as a POC• Working on GIGI applicationService KPI• We have completed 235+ production request for the different applications for this year• We have implemented 92+ Changes on various application during this yearTech Improvements:Delivered close to 22+ Technical improvement in the team which helps to achieve more projects and follow standards in GSK.Delivered First AKS Service within this year.Reduced the Azure Cost by moving the service to Enterprise Systems like AKS, Kong Gateway
+

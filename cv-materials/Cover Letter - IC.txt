@@ -1,0 +1,20 @@
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the <role name> role at <placeholder>. With over 20 years of hands-on software engineering experience across Banking, Insurance, and Health — and the last several years spent building enterprise agentic and AI-powered systems — I am excited by <placeholder>'s mission and the opportunity to turn ambiguous, high-impact problems into accurate, decision-ready, production-grade solutions. That challenge sits right at the intersection of my domain background and my current technical focus.
+
+As a Forward Deployed Engineer and hands-on solution architect at GSK, I deliver production-grade applications end to end — from discovery and solution design through implementation, deployment, and post-production support. Most relevant to this role, I have taken enterprise agentic and model-driven AI from prototype to secure, scalable production: a multi-agent platform using LLMs (Claude / OpenAI) with real-time tool calling, RAG knowledge pipelines, and custom agents behind an MCP server, all routed through a governed LLM/API gateway for access, cost, and policy control.
+
+A few highlights that reflect the value I would bring:
+
+- AI-powered engineering — Built multi-agent orchestration with RAG and prompt engineering, and integrated AI-assisted development tools (Claude Code, GitHub Copilot) directly into the SDLC.
+- Production-grade delivery — Designed microservices and API Gateway architectures on Azure (PaaS, AKS, Functions), AWS, and GCP, applying modern API, CI/CD, and Kubernetes (AKS) practices.
+- Measurable impact — Removed a real-device testing and accessibility bottleneck by moving to real-time API integration, reducing the validation cycle from 30 days to 1 day, and accelerated deployments by ~60% through pipeline automation.
+- Client-facing engineering — Drove pre-sales and solution discovery through POCs and POVs, scoping estimates and shaping proposals that secured buy-in and funding.
+
+Beyond the technology, I bring a consulting mindset and strong stakeholder management — I embed with teams and customers, translate business needs into scalable solutions, and mentor engineers along the way. <placeholder>'s focus on AI-driven, agentic automation is precisely where I have been investing my expertise, and I would welcome the chance to apply that in a mission I believe in.
+
+Thank you for your consideration. I would be glad to discuss how my experience aligns with your goals.
+
+Warm regards,
+Balachandar Ramalingam
++91 98868 97361 | ramalingam.bala@gmail.com | linkedin.com/in/BalachandarRamalingam

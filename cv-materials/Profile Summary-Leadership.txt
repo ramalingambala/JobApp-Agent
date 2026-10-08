@@ -1,0 +1,59 @@
+## SUMMARY
+Enterprise technology and engineering leader with two decades of experience driving large-scale **digital transformation**, **enterprise application modernization**, and **AI-led** change across global organizations in **Healthcare and Financial Services (retail banking, payments, and insurance)**. Define **target-state modernization roadmaps** and **enterprise architecture governance** for **high-availability, high-volume transaction processing** platforms — spanning **cloud-native, API-first, microservices, and event-driven** architectures with strong **resiliency, security, and regulatory compliance**. Own end-to-end **technology roadmaps** and build **secure, scalable digital ecosystems**, partnering with **Product Managers and Product Owners** and influencing **senior leadership** while leading geographically distributed **engineering organizations of 50+** across multiple **GCC locations**, owning **technology budgets up to $20M**, and driving **cost optimization**.
+
+Deep expertise in **enterprise architecture**, **cloud platforms**, **intelligent automation**, **agentic AI**, and **enterprise integration (ERP / SAP)**. Championed the enterprise-wide rollout of **GIGI**, a **Conversational AI** assistant, and set technical direction for the enterprise **RAG and vector-search platform** — **embedding pipelines**, **vector indexing**, and **agent memory** for **multi-agent systems** — with **prompt engineering**, **model evaluation**, **LLMOps**, **LLM observability**, and **Responsible AI governance** driving **AI reliability** across **distributed systems**. Remain **hands-on** — personally shipping **production LLM/RAG deployments** (**Python, ReactJS**, custom **agents**, **MCP server**) and taking **GIGI** and **NINA** from **POC to secure, scalable production** — while pairing executive scope with a **high-agency** approach, owning ambiguous problem scopes, partnering with **enterprise customers** through client-facing **POCs and POVs** in **pre-sales**, and operating **production systems** in **regulated (GxP / SOX)** environments. Enforce enterprise **security and compliance** across engineering deliverables under **GxP, PCI DSS, and GDPR**.
+
+## EXPERIENCE
+
+### Associate Director / Senior Principal — GSK
+Bengaluru, India | Aug 2021 – Present
+- Lead the **global strategy and roadmap** for a portfolio of **enterprise applications** (GIGI, Site2Test, Sales Performance, Supplier Portal), delivering a unified, secure, and scalable **digital ecosystem** that improves workforce **productivity and collaboration** for a large global workforce.
+- Drive **AI-led enterprise transformation** by defining the organization's **AI roadmap strategy** and enterprise **AI adoption** framework, including **NINA** — an enterprise **multi-agent platform** built with **LangGraph / LangChain** — that automates the end-to-end **SDLC** through **autonomous agents** and **copilots** (BRD generation, requirement analysis, functional regression, and non-functional load-testing) to accelerate delivery and improve engineering quality.
+- Proud to have delivered **organization-wide employee experience** by launching **GIGI** live across Web, Android, and iOS — now adopted enterprise-wide — and rolling out a portfolio of applications trusted by senior leaders and executives across **CyberSecurity, Procurement, Research & Development, Legal, and Finance** at GSK.
+- Own **enterprise architecture** modernization through **intelligent automation**, **agentic AI**, and **copilots** — building **reusable AI accelerators and IP** on an **API-first**, **microservices** stack (custom agents, **MCP server**, **LLM Gateway**, **Kong Gateway**) with **full-stack engineering (Python, ReactJS)** across **Azure and AWS**, influencing **senior leadership** on business value and adoption.
+- Established **enterprise architecture governance** across the application portfolio — defining **architecture standards, reference architectures, and design patterns**, leading **architecture review boards**, and rationalizing technology choices and **total cost of ownership** to keep solutions aligned with enterprise, **security**, and **regulatory** standards well beyond AI platforms.
+- Designed **API-first**, **microservices**, and **event-driven** enterprise integration — applying **asynchronous, message-driven, publish/subscribe and message-queue** patterns with **serverless event handlers (Azure Functions, Logic Apps)**, **Azure Service Bus / Event Grid**, and **enterprise messaging / ESB (WebSphere ESB, TIBCO)** to decouple and reliably scale high-throughput, distributed workloads.
+- Delivered to **production** the organization's enterprise **RAG and vector-search platform** — built **hands-on** with **LlamaIndex** over **LanceDB and ChromaDB** (**vector databases**) — standardizing **embedding pipelines**, **vector indexing**, and semantic/hybrid retrieval to ground enterprise **LLM** responses in trusted data, and using the vector store as **persistent agent-memory** for the **NINA multi-agent platform**; established **LLM observability and AI governance** with **Langfuse** (tracing, **model evaluation**, **prompt versioning**, token/cost monitoring) and **AI evaluation** via an **LLM-as-a-judge** framework as quality gates to catch model drift — driving **AI reliability**, quality, and **cost optimization** at scale.
+- Integrated custom enterprise applications with **ERP (SAP)** systems, leading the tech team for the SAP approval interface implementation across enterprise workflows.
+- Own **technology budget**, **financial planning**, and budget allocation of up to **$20M** across **GCC locations**, aligning technology investment with enterprise transformation priorities and driving **cost optimization**.
+- Delivered the organization's **first-ever AKS service** — a proud engineering milestone — while driving **cost optimization** by migrating workloads to enterprise systems (**AKS, Kong Gateway**) and reducing **Azure** spend by **~$1.2M**.
+- Govern enterprise-wide **functional transformation programs** through engineering standards, **release governance**, **automated quality gates**, and best practices that sustain complex, highly available **cloud-native** systems at enterprise scale.
+- Standardized **IT service management** using **ServiceNow (SNOW)** for **Incident, Change, and Problem Management** — driving **process improvement** that reduced the top 10% of unplanned outages and improved **Incident SLA** attainment from **60% to 80%**, increasing operational efficiency and reliability.
+- Own end-to-end **engineering delivery** across multiple **GCC locations** for **Agile** squad teams of **50+** — growing individual contributors to senior technical and managerial roles through structured coaching and development plans.
+
+### Engineering Manager — TESCO
+Bengaluru, India | Oct 2009 – Aug 2021
+- Set up and led **development teams across 2 GCC locations** for multiple enterprise programs, partnering closely with **Product Managers and Product Owners** to translate business demand into the **product roadmap** and delivery for **Tesco Digital Wallet Pay+ payments processing**.
+- Built deep **financial-services domain** expertise at **Tesco Bank** across **retail banking, payments, and insurance** — delivering **Bank Online/Mobile banking**, **Tesco Digital Wallet Pay+ payments processing**, **credit-card** gateways, and **General Insurance** — and engineered **high-volume, high-availability transaction processing** with **disaster recovery (DR)** for application/batch interfaces, **cross-region resiliency**, and **PCI DSS**-aligned **security** for payment and customer data.
+- Took pride in shaping engineering careers — partnering with the centralized technology team to formalize the enterprise **career framework** for the Bank, embedding capability frameworks and workforce development that grew talent across the organization.
+- Developed engineers through **coaching**, performance assessments, feedback, and structured development plans, consistently growing talent into senior roles.
+- Designed and implemented enterprise **automations** across software development and service management, improving team **productivity** and process maturity.
+- Established real-time service dashboards using **SSRS, APM, ServiceNow, and Azure Metrics** to improve operational visibility and reliability.
+- Communicated highly technical concepts effectively to varied audiences, supporting structured technical decision-making and **collaboration** across **cross-functional teams**.
+
+### Senior Software Engineer — LanceSoft India Pvt Ltd
+Bangalore, India | Dec 2007 – Sep 2009
+- Delivered enterprise application development for **Linqpay**, a **credit card payment gateway**, across full software development lifecycles, from design through deployment and support.
+
+### Software Engineer — Accenture Services Pvt Ltd
+Bangalore, India | Jul 2005 – Nov 2007
+- Built and supported the software solution for UK insurance provider **RSA** through **agile squads**.
+
+## CORE COMPETENCIES
+- **Leadership & Strategy**: Technology Roadmap Ownership • Digital Transformation • AI-Led Transformation • Enterprise AI Adoption • AI Governance • Reusable AI Accelerators / IP • Enterprise Platform Strategy • Financial Services Domain (Retail Banking, Payments, Insurance) • Payments / Transaction Processing • Technology Budget Ownership (up to $20M) • Financial Planning & Cost Optimization • Vendor & Stakeholder Management • Product Manager / Product Owner Partnership • Executive Influence • Global Team Leadership (50+) • Cross-Functional Program Leadership
+- **AI & Automation**: Generative AI • Agentic AI • Multi-Agent Systems • Autonomous Workflows • Copilots • Conversational AI • Intelligent Automation • RAG Architectures • Vector Databases (LanceDB, ChromaDB) • Embedding Pipelines • Agent Memory Systems • Prompt Engineering • Model Evaluation • LLMOps • LLM Observability & Governance (Langfuse) • AI Evaluation / LLM-as-a-Judge • Responsible AI • LangGraph / LangChain • LlamaIndex • MCP • OpenAI, Gemini, Groq • Copilot Studio • AI Foundry • Automation Anywhere • Power Apps / Power Automate
+- **Architecture & Engineering**: Enterprise Architecture • Distributed Systems • Cloud-Native & Hybrid Architecture • Event-Driven Architecture • Asynchronous / Message-Driven Integration • Enterprise Integration (ERP / SAP, ESB) • API Gateway • Microservices • OAuth • .NET • Node.js / Express.js • Python • React
+- **Cloud & Platforms**: Microsoft Azure (AKS, App Service, ASE, Functions, Logic Apps, Service Bus, Event Grid, API / App Gateway, WAF, Traffic Manager, App Insights, Key Vault) • AWS (S3, EC2, Lambda, ELB, CloudFront) • GCP (Vertex AI, Firebase) • Kong Gateway • Akamai
+- **Data & DevOps & Scripting**: MS SQL Server • Oracle • MySQL • Databricks • Azure DevOps • GitHub Actions • Git • Terraform • ARM • PowerShell • Shell
+- **Delivery, Security & Governance**: SDLC Governance • DevOps & CI/CD • Security & Compliance • ITSM (ServiceNow) • Testing & Security (Selenium, JMeter, BrowserStack, POSTMAN, SonarQube, BlackDuck, Invicti, ZAP)
+- **Web/App Servers & Messaging**: IIS • Apache • WebLogic • JBOSS • Tomcat • WAS • TIBCO
+
+## CERTIFICATIONS
+- Microsoft AI Boot Camp
+- LUMA Certified Practitioner in Design Thinking
+- Automation Anywhere Certified RPA Professional
+- IBM Certified Professional — WebSphere Enterprise Service Bus V7.0 Integration Development
+- Microsoft Certified Professional Developer — Enterprise Application (MCPD EA)
+
+## EDUCATION
+**Bachelor of Technology, Computer Science** — Vellore Institute of Technology, 2005

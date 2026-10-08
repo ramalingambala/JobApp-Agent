@@ -1,0 +1,67 @@
+Experience Range (only)-23-29 yrs
+
+
+Solution Architect/Enterprise Architect
+
+Location: India
+Company: EPAM Systems
+
+About EPAM
+
+EPAM is a leading global provider of digital transformation services, consulting, and engineering solutions. We work with Fortune 500 companies and global enterprises to deliver next-generation platforms and managed services. We are seeking a Lead Solution Architect (Director-level) who combines deep technical knowledge, leadership of large-scale managed services programs, and the ability to engage senior business stakeholders.
+
+This role is ideal for a strategic thinker and hands-on technologist who can inspire teams, shape enterprise architectures, and drive business outcomes in complex global delivery environments.
+
+
+Role Overview
+
+As a Lead Enterprise/Solution Architect at EPAM, you will play a dual role as a technology leader and client partner. You will lead solution strategy, oversee architecture governance, and manage large-scale managed services engagements. You will directly interact with CXO-level stakeholders to define transformation roadmaps while guiding and mentoring teams of architects and engineers to deliver excellence.
+
+
+Key Responsibilities
+
+Enterprise Architecture & Strategy
+Define and own the solution strategy for large-scale digital transformation and managed services programs.
+Drive multi-year technology roadmaps, modern platform architectures, and operating models.
+Ensure solutions are scalable, resilient, cost-efficient, and aligned with business objectives.
+Managed Services Leadership
+Architect and oversee large-scale managed services engagements, including application management, cloud operations, and platform engineering.
+Define SLAs, governance models, performance monitoring, and continuous improvement frameworks.
+Ensure operational excellence through automation, AI/GenAI, and DevOps-driven practices.
+Hands-On Technical Leadership
+Stay hands-on with architecture, proof-of-concepts, and technology exploration.
+Lead technical due diligence, solution assessments, and modernization strategies.
+Advocate for innovation, including cloud-native, microservices, event-driven architectures, and AI/GenAI-enabled solutions.
+Client Advisory & Stakeholder Engagement
+Act as a trusted advisor to CIOs, CTOs, and other CXO-level executives.
+Bridge business strategy with technology execution, presenting clear roadmaps and business cases.
+Lead pre-sales, RFP/RFI responses, and executive-level presentations to secure new business opportunities.
+Team Leadership & Talent Development
+Lead a community of solution architects, principal engineers, and delivery leads across multiple geographies.
+Foster a culture of technical excellence, knowledge sharing, and continuous learning.
+Mentor senior architects on architecture best practices, client engagement, and managed services solutioning.
+Required Skills & Qualifications
+
+23+ years of experience in software engineering, enterprise architecture, and solution design.
+Proven track record in leading large-scale managed services programs (multi-year, multi-million-dollar engagements).
+Deep knowledge of cloud platforms (AWS, Azure, GCP), enterprise integration, and platform modernization.
+Hands-on experience with at least one programming language (Java, .NET, JavaScript/TypeScript, or Python).
+Strong expertise in service delivery models, SLAs/KPIs, and governance frameworks.
+Experience with AI/GenAI integration in managed services (automation, predictive analytics, conversational AI, knowledge management).
+Demonstrated ability to interact with and influence CXO-level executives.
+Proven experience in IT consulting or global delivery organizations.
+Excellent leadership, communication, and presentation skills.
+
+Good-to-Have Skills
+
+Experience with AIOps, MLOps, and intelligent automation.
+Knowledge of GenAI orchestration frameworks (LangChain, LlamaIndex, Azure OpenAI, AWS Bedrock).
+Strong business acumen to participate in contract negotiations, service pricing, and P&L discussions.
+Thought leadership (public speaking, whitepapers, or blogs in architecture and AI/GenAI).
+
+Why EPAM?
+
+Lead strategic client partnerships at the intersection of technology, business, and operations.
+Influence technology direction for some of the worlds largest enterprises.
+Drive large-scale, multi-tower managed services programs with cutting-edge automation and GenAI.
+Join a culture of innovation, collaboration, and continuous growth.

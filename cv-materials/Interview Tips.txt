@@ -1,0 +1,37 @@
+GenAI / Agentic AI Solution Ñ Interview Answer
+Opening (context):
+"At GSK I architected and deployed an agentic AI platform that embeds GenAI across our software delivery lifecycle. I'll walk through the business problem, the architecture, our LLM and RAG strategy, the guardrails, and the outcome."
+
+1. Business Problem
+Our engineering teams were spending a disproportionate amount of time on the "connective tissue" of delivery Ñ turning business requirement documents and stakeholder discussions into BRDs, translating those into JIRA stories, then hand-crafting functional and regression test suites, and manually standing up non-functional load tests before major releases. It was slow, inconsistent across teams, and a bottleneck to release velocity. Leadership also wanted a credible, governed path to realize business value from GenAI rather than ad-hoc tool usage.
+
+2. Architecture
+I designed a multi-agent system (internally "NINA") where specialized agents each own a stage of the SDLC:
+
+A requirements agent that reads BRD documents and captured team-discussion notes and produces structured requirements.
+A story agent that generates JIRA stories from those requirements.
+A test-authoring agent that derives functional and regression test suites directly from the JIRA stories.
+A non-functional agent that spins up load-testing scenarios ahead of major releases.
+The agents are built as custom agents backed by an MCP (Model Context Protocol) server, which exposes our internal tools and data sources to the models in a standard, controlled way. All model traffic is routed through a governed LLM Gateway fronted by Kong API Gateway Ñ so every call passes through a single, policy-enforced control plane for authentication, routing, rate limiting, and cost governance. I also ran a POV integrating Claude Code through the Kong/LLM Gateway to bring the same governance to AI-assisted development.
+
+3. LLM Strategy
+Rather than hard-wiring one model, the LLM Gateway lets us route to the best-fit model per task and swap models without changing application code. High-reasoning tasks (requirement synthesis, test design) go to stronger frontier models; lighter, high-volume tasks use cheaper/faster models. Centralizing this at the gateway gave us model portability, cost control, and a single place to enforce policy Ñ critical in a regulated pharma environment.
+4. RAG Approach
+The agents are grounded in enterprise context via retrieval Ñ BRD documents, team discussion notes, and existing JIRA history are indexed and retrieved at inference time so the models work from our domain reality, not just their training data. The MCP server is the standardized retrieval and tool-calling layer: agents pull the relevant documents and structured data on demand, which keeps outputs accurate, traceable back to source, and consistent across teams.
+
+5. Guardrails
+Because this is pharma (GxP-sensitive), governance was designed in from day one, not bolted on:
+
+Gateway-level control Ñ all LLM traffic flows through the Kong/LLM Gateway for authN/authZ, rate limiting, cost caps, and audit logging.
+Security and compliance sign-off Ñ I worked with Cybersecurity and Governance to get tooling formally approved before production, consistent with how I got BrowserStack approved for GSK.
+Human-in-the-loop Ñ generated BRDs, stories, and test suites are reviewed and approved by engineers before they're used; the agents accelerate, they don't auto-merge.
+Managed identity and secret rotation Ñ access via managed identities and secret rotation (AKeyless) rather than static credentials.
+Data grounding via RAG to constrain outputs to approved enterprise sources and reduce hallucination.
+6. Business Outcome
+
+Compressed the requirements-to-test-suite pipeline from a manual, multi-day effort per feature into an assisted, largely automated flow, freeing engineers for higher-value work.
+Established a repeatable, governed GenAI pattern Ñ the MCP + LLM Gateway architecture Ñ that other teams can adopt safely, which became the foundation of GSK's AI roadmap conversation I presented to leadership.
+Delivered it on enterprise-grade, cost-efficient infrastructure (AKS + Kong Gateway), contributing to Azure cost reduction by moving services onto shared enterprise systems.
+Just as importantly, it gave leadership a credible, secure blueprint for scaling GenAI Ñ POCs/POVs (including Claude Code integration) that earned stakeholder buy-in and moved GenAI from experimentation toward governed production use.
+Close:
+"So end to end Ñ a real business bottleneck, a multi-agent architecture with an MCP server and a governed LLM gateway, model-flexible LLM strategy, RAG grounding on our enterprise documents, defense-in-depth guardrails, and a measurable outcome in both delivery speed and a reusable, compliant GenAI foundation."

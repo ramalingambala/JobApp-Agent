@@ -1,0 +1,20 @@
+Dear Hiring Manager,
+
+I am writing to express my interest in the <role name> role at <placeholder>. With over 20 years driving engineering excellence across the Health, Banking, and Insurance domains, I bring a rare blend of hands-on technical depth and proven leadership of large, geographically distributed engineering organisations — a combination I believe maps directly to what <placeholder> is looking for.
+
+In my current role at GSK (Bengaluru, since Aug 2021), I lead and scale globally distributed engineering teams across multiple GCC and global locations, spanning software developers, automation testers, and support engineers across diverse technology stacks. I serve as the technical authority and strategic voice across AI/LLM integration, Agentic AI, cloud-native architecture, DevOps, and multi-platform engineering — translating complex technical decisions into clear, actionable direction for enterprise-wide product and operational audiences.
+
+A few highlights that reflect the value I would bring:
+
+Team building & leadership — Built and managed 50+ engineers, including mobile, full-stack, and cloud engineers, QA, and product owners across 2 GCC locations, growing individual contributors into senior technical and managerial roles through structured coaching and development plans.
+Enterprise engineering at scale — Delivered enterprise applications across On-Prem, Cloud-Native, and Hybrid infrastructure, applying strong product and application design in distributed, complex architectures.
+AI-led modernisation — Drove enterprise product roadmap execution by aligning AI, DevOps, and software engineering strategy to business objectives, resolving cross-functional blockers and leading structured decision-making across Engineering, Product, and Operations.
+SDLC governance — Governed end-to-end SDLC across AI-integrated, mobile, and web programs — defining engineering standards, release governance, automated quality gates, and CI/CD best practices for highly available, cloud-native systems at enterprise scale.
+Stakeholder ownership — Owned technical delivery for software development services with strong stakeholder management, acting as a trusted advisor to senior leadership on architecture, scalability, security, and performance.
+Beyond execution, I am a strategic and forward thinker who consistently proposes and implements new ideas that advance the organisation's vision. I would welcome the opportunity to bring that same combination of engineering depth, leadership, and strategic drive to <placeholder>.
+
+Thank you for your consideration. I would be glad to discuss how my experience aligns with your goals.
+
+Warm regards,
+Balachandar Ramalingam
++91 98868 97361 | ramalingam.bala@gmail.com | linkedin.com/in/BalachandarRamalingam

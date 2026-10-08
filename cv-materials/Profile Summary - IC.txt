@@ -1,0 +1,70 @@
+## SUMMARY
+Forward Deployed Engineer and hands-on solution architect with over **two decades** of software engineering experience delivering **production-grade** applications and **AI-powered** solutions across Healthcare, Banking, and Insurance.
+
+Specialize in enterprise **agentic** and model-driven AI — **multi-agent orchestration**, real-time **tool calling**, and **RAG** knowledge pipelines with **vector search and indexing**, **embedding pipelines**, and semantic/hybrid retrieval, plus **persistent agent memory** for stateful multi-agent systems and end-to-end **LLM observability** (distributed tracing, evaluation, prompt and token/cost monitoring) — all within an **MCP**-based, gateway-governed architecture taken from prototype to secure, scalable production over **distributed systems**. Architected the microservices platform that scaled **GIGI**, an enterprise-wide **Conversational AI** digital assistant, from fast-track POC to enterprise-grade production.
+
+Daily user of **AI-assisted development** tools, proficient across **.NET, Node.js, Python, React** and cloud platforms (**Azure, AWS, GCP**), with strong command of **microservices**, **APIs**, **CI/CD**, **Kubernetes (AKS)**, and **cloud-native** architecture. Combine deep technical expertise with a consulting mindset and strong **stakeholder management** — translating business needs into scalable solutions from discovery through deployment, and delivering client-facing **POCs** and **POVs**, estimates, and proposals in **pre-sales** settings. Bring a **high-agency** mindset — taking end-to-end ownership of **ambiguous problem scopes**, embedding directly with **enterprise customers** and **technical stakeholders**, and **debugging** and operating **production systems** in customer-controlled, **regulated (GxP / SOX)** environments.
+
+## EXPERIENCE
+
+### Senior Principal — GSK
+Bengaluru, India | Aug 2021 – Present
+- Pioneered enterprise **Agentic AI** solutions — architected **MCP (Model Context Protocol)** Server/Client systems on **Azure Functions**, **multi-agent orchestration** frameworks (**LangGraph / LangChain**) with parallel specialist agents using **multi-model LLMs (OpenAI GPT-4o / GPT-4o-mini, Claude Opus 4 via Google Vertex AI, and Groq)**, real-time **tool calling**, and **RAG** knowledge pipelines — integrated with **GitHub Copilot** and Microsoft 365 surfaces (Teams, Outlook, SharePoint).
+- Built the enterprise **RAG and vector-search** layer with **LlamaIndex** over **LanceDB and ChromaDB** — designing **embedding pipelines**, **vector indexing**, chunking, and semantic/hybrid retrieval with re-ranking to ground **LLM** responses in trusted enterprise data for accurate, low-hallucination answers.
+- Implemented **persistent agent memory** on **LanceDB** for the **NINA multi-agent platform** — storing conversational and task **vector memory** so agents retain long-running context and state across sessions, enabling stateful, context-aware **agent architectures** over **distributed systems**.
+- Instrumented end-to-end **LLM observability** with **Langfuse** — distributed **tracing** of agent and RAG calls, **prompt versioning**, offline/online **evaluation**, and latency and **token/cost monitoring** — improving **reliability**, quality, and cost efficiency of AI systems.
+- Operationalized **model serving and deployment** on **Google Vertex AI** and custom **inference APIs**, and established lightweight **MLOps** — **model / prompt versioning**, **CI/CD for ML** on **Azure DevOps / GitHub Actions**, and **embedding management** — to ship and govern models reliably in production.
+- Built **structured and unstructured data pipelines** on **Databricks** with **Delta Lake** and **PySpark** — ingesting and transforming raw enterprise data into analytics-ready, structured datasets that feed **RAG** knowledge pipelines and **predictive analytics** (Python, PySpark) for AI-driven applications.
+- Designed and implemented **AI evaluation** pipelines using an **LLM-as-a-judge** approach for the **NINA BRD agent** — scoring generated business-requirement documents on accuracy, completeness, and hallucination against reference rubrics, wiring the automated **eval** scores into **Langfuse** as quality gates to catch **drift** and continuously tune prompts and model selection.
+- Architected AI-integrated, **cloud-native** mobile and web applications across Health, Banking, and Insurance — leveraging **.NET, Node.js, React, and Python** on **Azure PaaS, AWS, and GCP**, spanning hybrid, multi-cloud, and on-premises infrastructure with high availability and scalability by design.
+- Led enterprise **cloud migration** programs, modernizing legacy on-premises workloads to **Azure cloud-native** services — adopting **microservices**, containerization, **serverless**, and **Infrastructure-as-Code (Terraform/ARM)** with zero-downtime migration strategies.
+- Built AI-powered solutions using a **multi-agent architecture (NINA)** that automates BRD creation, JIRA-driven feature development, functional **regression test** generation, and **load-testing** agents.
+- Integrated **AI-assisted development** tools including **Claude Code** and **GitHub Copilot** into the SDLC — piloting Claude Code with **Kong Gateway** and **LLM Gateway**, and adopting Copilot for peer PR review.
+- Established enterprise **DevOps** pipelines with integrated quality gates across functional, regression, and accessibility test automation — **BrowserStack** for cross-browser/cross-device and WCAG validation, alongside **SAST/DAST** (Invicti, SonarQube, BlackDuck) embedded in **Azure DevOps** and **GitHub Actions** CI/CD.
+- Matured Azure quality and **security** postures across **GxP** and **SOX**-regulated applications — implementing **DR** strategies, Azure Policy governance, security scanning pipelines, and SDLC quality gates aligned to enterprise standards (**OWASP, ISO 27001**).
+- Designed and delivered **microservices** architecture and **API Gateway** for enterprise APIs (first microservice-based Delphi API); hands-on across **Microsoft Azure** migrating services to **AKS**, App Service Environments, and Managed Application Gateway.
+- Served as trusted technical advisor on architecture, scalability, security, and performance — designing solutions for GIGI, S2T, H2T, and Supplier Portal and leading architecture reviews.
+- Own end-to-end **engineering delivery** across **App Development**, **SRE**, and **Product teams** — driving **Agile** delivery cadence across **two strategic GCC locations** for teams of up to **50+**.
+- Delivered client-facing technical presentations, **POCs**, and **POVs** to enterprise customers and senior **technical stakeholders** — embedding directly with teams to scope **ambiguous** problems, translate business needs into practical solutions, and uncover opportunities for expansion.
+
+### Engineering Manager — TESCO
+Bengaluru, India | Oct 2009 – Aug 2021
+- Technical SME for Bank Online and Mobile application deliverables; proposed and implemented **Robotics Process Automation** for the Bank on cloud infrastructure.
+- Led the engineering team delivering **Tesco Digital Wallet Pay+** engineering deliverables end-to-end — from design through deployment and support across **2 GCC locations**.
+- Led migration of enterprise General Insurance applications from on-premises to **cloud** infrastructure, including **DR** setup for application batch interfaces.
+- Built real-time service dashboards (SSRS, APM) and integrated web services for Bank General Insurance; proficient integrating applications via scripting and **API** interfaces.
+- Designed and implemented numerous **automations** for service management, driving **process improvement** and team efficiency.
+
+### Senior Software Engineer — LanceSoft India Pvt Ltd
+Bangalore, India | Dec 2007 – Sep 2009
+- Delivered **enterprise application** development for **Linqpay**, a **credit card payment gateway**, across full software development lifecycles, from design through deployment and support.
+
+### Software Engineer — Accenture Services Pvt Ltd
+Bangalore, India | Jul 2005 – Nov 2007
+- Built and supported the software solution for UK insurance provider **RSA** through **agile squads**.
+
+## CORE COMPETENCIES
+- **AI & LLM**: Agentic AI & Multi-Agent Orchestration • Conversational AI (GIGI) • LLMs (Claude, OpenAI, Gemini, Groq) • LangGraph / LangChain • MCP (Model Context Protocol) • Tool Calling • Prompt Engineering • Autonomous Workflows
+- **RAG & Vector**: RAG Pipelines • LlamaIndex • LanceDB & ChromaDB (Vector Search & Indexing) • Embedding Pipelines • Semantic / Hybrid Retrieval • Chunking & Re-ranking • Agent Memory / Persistent State
+- **LLM Observability & Evaluation**: Langfuse (Tracing, Evaluation, Prompt Versioning, Token / Cost Monitoring) • AI Evaluation / LLM-as-a-Judge • Evaluation Metrics (Precision / Recall / F1) • Hallucination Detection • Model Evaluation & Testing • Drift Monitoring
+- **Model Serving & MLOps**: Cloud Model Deployment (Google Vertex AI, Custom Inference APIs) • Model Versioning / Registry • CI/CD for ML • Embedding Management • Real-Time Inference Optimization
+- **Data Engineering & Analytics**: Databricks • Delta Lake (Lakehouse) • PySpark • Structured / Unstructured Data Pipelines • ETL & Data Ingestion • Predictive Analytics (Python, PySpark)
+- **AI-Assisted Dev**: Claude Code • GitHub Copilot • Copilot Studio • AI Foundry • Vertex AI
+- **Architecture & Integration**: Distributed Systems • Cloud-Native Architecture • Microservices • API Gateway • REST APIs • OAuth • Serverless / Event-Driven
+- **Cloud & Platforms**: Microsoft Azure (PaaS, AKS, Functions, Storage Account, ASE, WAF) • AWS (S3) • GCP • Kubernetes (AKS) • Kong Gateway
+- **Programming Languages**: Python • TypeScript • Node.js • Express.js • .NET • React
+- **Databases**: MS SQL Server • PostgreSQL • Oracle • MySQL • Databricks
+- **DevOps / CI-CD**: Azure DevOps • GitHub Actions • Git • SVN • Terraform • ARM • PowerShell • Shell
+- **Testing & Security**: Selenium • JMeter • BrowserStack • POSTMAN • SoapUI • SonarQube • BlackDuck • Invicti • ZAP • Security & Compliance
+- **Consulting & Delivery**: Solution Design & Pre-Sales (POCs / POVs) • Stakeholder Management • Agile Delivery
+- **Web / App Servers**: Microsoft IIS • Apache • WebLogic • JBOSS • Tomcat • WAS
+
+## CERTIFICATIONS
+- Microsoft AI Boot Camp
+- LUMA Certified Practitioner in Design Thinking
+- Automation Anywhere Certified RPA Professional
+- IBM Certified Professional — WebSphere Enterprise Service Bus V7.0 Integration Development
+- Microsoft Certified Professional Developer — Enterprise Application (MCPD EA)
+
+## EDUCATION
+**Bachelor of Technology, Computer Science** — Vellore Institute of Technology, 2005

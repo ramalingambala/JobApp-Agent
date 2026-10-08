@@ -1,0 +1,145 @@
+
+
+AI-generated content may be incorrect
+
+Francisco Cruz started transcription
+I
+
+IN: IBM, 3S-Innovation Lab-Ideation Room
+0 minutes 3 seconds0:03
+IN: IBM, 3S-Innovation Lab-Ideation Room 0 minutes 3 seconds
+demo or presentation material like prepared or you want to go through background, go for it. We'll spend about 10 minutes on that. You know, we might have some questions during your presentation. And then we'll go from there, right? Over to you. You guys, go for it.
+
+Balachandar Ramalingam
+0 minutes 17 seconds0:17
+Balachandar Ramalingam 0 minutes 17 seconds
+Yeah, sure.
+Balachandar Ramalingam 0 minutes 20 seconds
+Okay, thank you. I'll start with a short presentation and then I'll move on to a demo. Right, so that works for you. Okay, let me share my screen.
+Balachandar Ramalingam 0 minutes 33 seconds
+Let me know if you are able to see my screen.
+I
+
+IN: IBM, 3S-Innovation Lab-Ideation Room
+0 minutes 35 seconds0:35
+IN: IBM, 3S-Innovation Lab-Ideation Room 0 minutes 35 seconds
+Yeah, we see it.
+
+Balachandar Ramalingam
+0 minutes 37 seconds0:37
+Balachandar Ramalingam 0 minutes 37 seconds
+Okay, okay. So this is about a quick intro about me. I'm Bala, been here for most of years in GSK and predominantly I think I have an issue on sharing the screen. So let me share the slide alone and see if that works. My teams is always having a problem. Let me share only the.
+Balachandar Ramalingam 0 minutes 56 seconds
+Green, you see that works.
+Balachandar Ramalingam 1 minute 1 second
+Bear with me.
+Balachandar Ramalingam 1 minute 4 seconds
+Let me know if you're able to see my presentation slide now.
+I
+
+IN: IBM, 3S-Innovation Lab-Ideation Room
+1 minute 9 seconds1:09
+IN: IBM, 3S-Innovation Lab-Ideation Room 1 minute 9 seconds
+Yes.
+
+Balachandar Ramalingam
+1 minute 11 seconds1:11
+Balachandar Ramalingam 1 minute 11 seconds
+Okay, hope it is, it should work. Okay, almost I spent here for five years in GSK and predominantly in design, develop, and deploying custom and enterprise applications across multiple stakeholders and business functions. So we take care of both web app and as well as mobile app development.
+Balachandar Ramalingam 1 minute 35 seconds
+And the projects I have delivered so far are site to test, home to test for R&D, and spam reporter for cybersecurity, and sales performance app for finance executives, and supplier website, and PO terms and conditions, multilingual portal for GSK legal team.
+Balachandar Ramalingam 1 minute 55 seconds
+For the last couple of years, I've been spent focused on building EAI solutions. And the first one which we delivered is called GG, as everybody knows, a digital assistant for GSK. As everybody knows, I don't want to step into more about its features, but I want to highlight what's my...
+Balachandar Ramalingam 2 minutes 13 seconds
+contribution over there. So I was involved from day one of GGPOC and then I took ownership of technical and architectural design and takes all the smart controls approvals from different boards from EAI, CSO and GSC.
+Balachandar Ramalingam 2 minutes 32 seconds
+by moving the POC to MEP to release 1 for GG.
+Balachandar Ramalingam 2 minutes 40 seconds
+And after GG, I've worked on a couple of POCs. That's mostly for myself learning on how to use Copilot Studio. I think that's the time we were also given access to those tools, products, and to build an agentic flow with my custom MTP server. And I've showcased these two.
+Balachandar Ramalingam 3 minutes
+Our GSK leaders, and also I've been involved on integrating short short POC on how to integrate L.L.M. gateways to our CloudLoadbalancer platform.
+Balachandar Ramalingam 3 minutes 12 seconds
+And end of last year, I were involved in another POC on bringing Browser Stack AI testing tool, which helps my team and also a couple of other teams who are already using Browser Stack in a couple of POCs, which helps to predominantly reduce the...
+Balachandar Ramalingam 3 minutes 32 seconds
+the time taken for access update testing for our web applications, predominantly from close to 30 days to one day on real time. And also it helped me a lot on testing the mobile apps rather than managing all the physical mobile devices, which is very hard.
+I
+IN: IBM, 3S-Innovation Lab-Ideation Room
+3 minutes 46 seconds3:46
+IN: IBM, 3S-Innovation Lab-Ideation Room 3 minutes 46 seconds
+Ou.
+
+Balachandar Ramalingam
+3 minutes 51 seconds3:51
+Balachandar Ramalingam 3 minutes 51 seconds
+for me and for my team to manage it. And that's the POC which we delivered. And right now, it is now approved for GSK usage as well.
+Balachandar Ramalingam 4 minutes 1 second
+And currently, I'm working on a project called Nina for GSK Supply Chain Team.
+Balachandar Ramalingam 4 minutes 9 seconds
+So this is for a GSK supply chain global procurement team, where they own the process of bringing the raw materials or ingredients at manufacturing site.
+Balachandar Ramalingam 4 minutes 24 seconds
+which helps the doctors and scientists to bring the medicines quickly to a market.
+Balachandar Ramalingam 4 minutes 32 seconds
+So due to the current challenges what they're facing, like the non-standard process or different manufacturing site, manual reconcilations, error-prone issues, and they're all operating on Excels, right? So, and the data is huge.
+Balachandar Ramalingam 4 minutes 51 seconds
+and because of performance issue, so we proposed a digital solution called Nina. So which can overcome all these issues by providing a high performance web applications, which can has a real-time integration to data source and also collaborative.
+Balachandar Ramalingam 5 minutes 10 seconds
+to multiple different users across different manufacturing sites.
+I
+IN: IBM, 3S-Innovation Lab-Ideation Room
+5 minutes 16 seconds5:16
+IN: IBM, 3S-Innovation Lab-Ideation Room 5 minutes 16 seconds
+So, Balachandar, before you go on, wait, can you just paraphrase what the problem that Nina is solving? Sorry, there are a lot of bullet points I just didn't understand, underlying like elevator pitch. What is Nina?
+
+Balachandar Ramalingam
+5 minutes 16 seconds5:16
+Balachandar Ramalingam 5 minutes 16 seconds
+So.
+Balachandar Ramalingam 5 minutes 31 seconds
+Okay, so the Nina is solves how we bring the resilient, safe, and secure drug in supply chain as quickly as possible to the market.
+I
+IN: IBM, 3S-Innovation Lab-Ideation Room
+5 minutes 48 seconds5:48
+IN: IBM, 3S-Innovation Lab-Ideation Room 5 minutes 48 seconds
+Okay.
+
+Balachandar Ramalingam
+5 minutes 48 seconds5:48
+Balachandar Ramalingam 5 minutes 48 seconds
+Current issue.
+
+Balachandar Ramalingam
+39 minutes 11 seconds39:11
+Balachandar Ramalingam 39 minutes 11 seconds
+Like.
+I
+IN: IBM, 3S-Innovation Lab-Ideation Room
+39 minutes 20 seconds39:20
+IN: IBM, 3S-Innovation Lab-Ideation Room 39 minutes 20 seconds
+This is what resulted from me putting this in place from a business, yeah.
+
+Balachandar Ramalingam
+39 minutes 23 seconds39:23
+Balachandar Ramalingam 39 minutes 23 seconds
+Okay, okay. Got your point. Got your point. I think if you take for me, designing Nina is not only engineering solutions, but how to make sure the solutions provided by LLM is safe and secure.
+Balachandar Ramalingam 39 minutes 41 seconds
+Right, so in order to achieve that, what I've implemented is a real-time monitoring of how we are using our LLM has been producing the outcome, right, so that all the metrics from the LLMs are monitored, like cost, rights, and then latency.
+Balachandar Ramalingam 40 minutes 1 second
+which can be monitored on real time and also the accuracy of the data and relevancy of the LLM through LLM evaluations. So this will help to achieve the right output and make sure we are producing safe and secure solutions rather than we bring
+Balachandar Ramalingam 40 minutes 21 seconds
+anything insecure which is at risk.
+I
+IN: IBM, 3S-Innovation Lab-Ideation Room
+40 minutes 24 seconds40:24
+IN: IBM, 3S-Innovation Lab-Ideation Room 40 minutes 24 seconds
+OK, great.
+IN: IBM, 3S-Innovation Lab-Ideation Room 40 minutes 29 seconds
+I think that's okay for me. I think I got everything I need. Marko? Yeah, I'm good on my end. Bala, I think we're about time. Yeah, we're about time. Bala Chandar, thank you so much for showing us this. We really appreciate your time. Hang in there in terms of when we get back to you.
+IN: IBM, 3S-Innovation Lab-Ideation Room 40 minutes 47 seconds
+We still have another full week, so we're gonna go into mid next week, actually, until like Thursday or Friday, actually, so a week and a half, sorry. So, just hang in there. We have still have a few, like 50, 50 something years to go. Yeah, a little while ago.
+IN: IBM, 3S-Innovation Lab-Ideation Room 41 minutes 6 seconds
+All right. Thank you. Appreciate it. I will. Bye bye.
+
+Balachandar Ramalingam
+41 minutes 7 seconds41:07
+Balachandar Ramalingam 41 minutes 7 seconds
+Yeah, sure, sure. No problem. Yeah. Thank you. Yeah. Cheers. Bye bye.

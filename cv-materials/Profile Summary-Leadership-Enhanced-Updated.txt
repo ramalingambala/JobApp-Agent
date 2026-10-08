@@ -1,0 +1,54 @@
+## SUMMARY
+- **Enterprise technology and engineering leader** with two decades driving large-scale **digital transformation**, **application modernization**, and **AI-led change** across **Healthcare, Banking, and Insurance**.
+- Lead a global engineering organization of **over 50 across 3 GCC locations**, structured into **agile squads** of engineers, managers, and tech leads.
+- Own end-to-end **technology roadmaps** and set engineering direction while **influencing and advising VP- and CxO-level stakeholders**.
+- Accountable for a **technology portfolio budget of up to $20M** with full **P&L ownership** across resourcing, capital, and operating spend.
+- Championed a high-performing enterprise **digital workplace and conversational AI tool** adopted across **multiple regions and business units** by a **1 million-strong user base** — saving **~4 hours per user each week**, a **~10% productivity uplift**.
+- Led enterprise **AI transformation** — embedding reusable **AI agents** across the delivery lifecycle to **halve time-to-delivery (2 weeks to 1 week, ~50% faster)** and lift engineering throughput.
+- Grew and retained engineering talent — holding **attrition below 10%**, driving **internal promotions to 15–20%**, and building **career frameworks** and a pipeline of **next-level leaders**.
+- Combine **executive ownership with deep technical judgment**, governing production systems in **highly regulated environments**.
+
+## EXPERIENCE
+
+### Associate Director of Engineering — GSK
+Bengaluru, India | Aug 2021 – Present
+- Established the enterprise **agentic AI strategy and delivery model**, introducing a reusable **multi-agent platform** that compressed the **SDLC** — cutting **design from weeks to 1 day**, turning **real-time meeting discussions into requirements in 1 week**, reducing **development from 2 weeks to 1 week**, and generating **functional test scripts in real time**.
+- Owned the end-to-end **employee technology experience lifecycle** for an enterprise **digital workplace platform** that drove **over 20 million AI interactions**, with **71% positive feedback** and average productivity savings of **~4 hours per employee per week**.
+- Scaled the platform **2x from soft launch** to support a growing enterprise base of **up to 1 million users**, embedding safe, governed **AI adoption** across the global workforce.
+- Accountable for the **enterprise platform modernization portfolio** and engineering standards — establishing **reusable AI capabilities**, API-first integration patterns, and governance spanning **evaluation, observability, cost control, and responsible AI** that accelerated delivery, improved reliability, and reduced model risk.
+- Own a **technology portfolio budget of up to $20M** with **P&L accountability**, governing workforce, resourcing, partner contracts, capital, and operating spend across GCC locations while driving **cost optimization** — including sponsoring a **cloud-native platform capability** that cut cloud expenditure by **up to 10% per year (~$1.2M annually)**.
+- Manage **strategic vendors and delivery partners** and govern **senior-stakeholder relationships** across business units — aligning contracts, SLAs, and capacity with roadmap priorities to deliver enterprise outcomes.
+- Govern enterprise-wide **transformation programs** through engineering standards, **release governance**, and **automated quality gates**, and designed the **operating model** for project delivery.
+
+### Engineering Manager — TESCO
+Bengaluru, India | Oct 2009 – Aug 2021
+- Set up and led **development teams across 2 GCC locations** for multiple enterprise programs, owning **product roadmap** delivery for a **digital wallet and payments product** in partnership with Engineering and Product leadership.
+- Shaped engineering careers — partnering with the centralized technology team to formalize the enterprise **career framework** for the Bank, embedding capability frameworks and workforce development that grew talent across the organization.
+- Developed engineers through **coaching**, performance assessments, feedback, and structured development plans, consistently growing talent into senior roles.
+- Owned **hiring, performance calibration, promotions, succession planning, and retention** — holding **attrition below 10%** (from 13%), driving **internal promotions to 15–20%**, and cross-training talent across roles to build a resilient leadership bench.
+- Designed and implemented enterprise **automations** across software development and service management, improving team **productivity** and process maturity.
+- Established **real-time service dashboards** that improved operational visibility and reliability across enterprise systems, **lifting SLA attainment from 63% to 87%**.
+
+### Senior Software Engineer — LanceSoft India Pvt Ltd
+Bangalore, India | Dec 2007 – Sep 2009
+- Delivered enterprise application development for **Linqpay**, a **credit card payment gateway**, across full software development lifecycles, from design through deployment and support.
+
+### Software Engineer — Accenture Services Pvt Ltd
+Bangalore, India | Jul 2005 – Nov 2007
+- Built and supported the software solution for UK insurance provider **RSA** through **agile squads**.
+
+## CORE COMPETENCIES
+- **Engineering Leadership & Organization**: Global Engineering Leadership (50+) • Manager-of-Managers Leadership • Organization Design • Hiring & Workforce Planning • Performance Calibration • Talent Development • Succession Planning • Executive Influence
+- **Enterprise AI & Platform Strategy**: Digital Workplace Transformation • Employee Technology Experience • Enterprise AI Adoption • Agentic AI • Conversational AI • Multi-Agent Platforms • RAG & Enterprise Search • Reusable AI Capabilities • Product & Technology Roadmaps • Responsible AI
+- **Architecture, Reliability & Security**: Enterprise Architecture • Cloud-Native Platforms • Distributed Systems • API & Integration Strategy • Reliability Engineering • SDLC Governance • Security & Compliance (GxP, SOX, PCI DSS, GDPR)
+- **Financial, Vendor & Delivery Governance**: Portfolio Budget Ownership (up to $20M) • P&L Accountability • CapEx & OpEx Management • Resource & SOW Cost Governance • Financial Planning • Cost Optimization • Vendor & Stakeholder Management • Operating Models • Cross-Functional Delivery
+
+## CERTIFICATIONS
+- Microsoft AI Boot Camp
+- LUMA Certified Practitioner in Design Thinking
+- Automation Anywhere Certified RPA Professional
+- IBM Certified Professional — WebSphere Enterprise Service Bus V7.0 Integration Development
+- Microsoft Certified Professional Developer — Enterprise Application (MCPD EA)
+
+## EDUCATION
+**Bachelor of Technology, Computer Science** — Vellore Institute of Technology, 2005
