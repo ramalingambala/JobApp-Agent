@@ -368,7 +368,9 @@ Return ONLY the JSON object.
         match = re.search(r'\{.*\}', result_text, re.DOTALL)
         scores = json.loads(match.group()) if match else {}
 
-    best_profile = scores.get("best_profile", "IC")
+    best_profile = scores.get("best_profile") or "IC"
+    if best_profile not in ("IC", "Engineering Manager", "Leadership"):
+        best_profile = "IC"
     result_key = best_profile.lower().replace(" ", "_")
     return {
         "ic_score": scores.get("ic_score", 0),
